@@ -18,7 +18,7 @@ const router = new VueRouter({
   base: __dirname,
   routes: [
     {
-      path:'/',
+      path:'/mendeleev',
       component: PeriodicTable
     }
   ]
@@ -32,7 +32,7 @@ new Vue({
   template: `
     <div id="app">
       <ul>
-      <li><router-link to="/">Periodic Table</router-link></li>
+      <li><router-link to="/mendeleev">Periodic Table</router-link></li>
       </ul>
       <router-view></router-view>
     </div>`,

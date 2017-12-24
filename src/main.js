@@ -36,4 +36,4 @@ new Vue({
       </ul>
       <router-view></router-view>
     </div>`,
-}).$mount('#app')
+}).$mount('#app');

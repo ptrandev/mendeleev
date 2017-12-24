@@ -464,19 +464,23 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  margin: 0;
-  font-size: 50px;
+  font-size: 3.0vw;
 }
 
 h2 {
-  margin: 0;
-  font-size: 40px;
+  font-size: 2.2vw;
 }
 
-.header {
-  color: #DAE4E9;
-  padding: 5px;
-  text-align: center;
+h3 {
+  font-size: 2.0vw;
+}
+
+h5 {
+  font-size: 1.0vw;
+}
+
+span {
+  margin: 0;
 }
 
 .periodic-table {
@@ -484,28 +488,52 @@ h2 {
   width: 100%;
 }
 
-.period-container {
-  display: inline-block;
-  color: #DAE4E9;
-  width: 1.4vw;
+.card-element-wrapper {
+  display: block;
+  width: 100%;
+  height: 100%;
+  color: #F8FAFC;
+  background-color: #3D4852;
+  border-width: 1px 2px 2px 2px;
+  border-style: solid;
+  border-color: #222B2F;
+  text-align: left;
+  grid-column: 3 / 13;
+  grid-row: 2 / 4;
 }
 
-.period {
-  display: table;
-  height: 5.4vw;
-  width: 1.4vw;
+.card-element-container {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 5px;
+}
+
+.card-element-general {
+  display: inline-block;
+  color: #222B2F;
+  padding: 5px;
+  width: 15.8vw;
   text-align: center;
 }
 
-.period-label {
-  display: table-cell;
-  vertical-align: middle;
-  font-size: 18px;
+.card-element-name {
+  text-transform: capitalize;
+}
+
+.card-element-properties {
+  display: inline-block;
+}
+
+.card-element-label,
+card-element-boiling-point {
+  display: inline-block;
 }
 
 .elements-wrapper {
   display: inline-block;
   width: 97.2vw;
+  margin: 0 auto;
 }
 
 .elements-container {
@@ -514,7 +542,7 @@ h2 {
   grid-template-rows: 5.4vw 5.4vw 5.4vw 5.4vw 5.4vw 5.4vw 5.4vw;
   align-items: center;
   justify-content: center;
-  width: 97.2vw;
+  width: 100%;
   text-align: center;
 }
 
@@ -523,7 +551,7 @@ h2 {
   width: 5.4vw;
   border: 1px solid #222B2F;
   color: #222B2F;
-  background-color: #DAE4E9;
+  background-color: #F8FAFC;
   opacity: 0.9;
   transition: opacity 0.3s ease;
 }
@@ -538,30 +566,28 @@ h2 {
   margin-right: 0;
 }
 
-.element-info {
+.element-container {
   padding: 2px;
 }
 
 .atomic-info {
   display: block;
   text-align: left;
+  width: 100%;
+  height: 1vw;
 }
 
 .atomic-number {
-  display: inline;
-  font-size: 14px;
-  margin-left: 2px;
+  display: inline-block;
+  margin: 0px 0px 0px 2px;
+  font-size: 0.75vw;
   vertical-align: top;
 }
 
 .atomic-mass {
   float: right;
-  margin-right: 2px;
-  font-size: 14px;
-}
-
-.element-symbol {
-  text-align: center;
+  margin: 0px 2px 0px 0px;
+  font-size: 0.75vw;
 }
 
 h2.gas {
@@ -571,15 +597,29 @@ h2.gas {
 
 h2.liquid {
   -webkit-text-stroke: 2px #222B2F;
-  color: #fff;
+  color: #F8FAFC;
 }
 
-.element-name,
+.element-info {
+  width: 100%;
+  text-align: center;
+}
+
+.element-symbol {
+  display: block;
+  width: 100%;
+}
+
+.element-name {
+  display: block;
+  font-size: 0.75vw;
+}
+
 .electron-configuration {
   display: block;
   margin: auto;
   text-align: center;
-  font-size: 14px;
+  font-size: 0.5vw;
 }
 
 .nonmetal {
@@ -618,6 +658,15 @@ h2.liquid {
   background-color: #FA7EA8;
 }
 
+.placeholder {
+  cursor: default !important;
+}
+
+.placeholder:hover,
+.placeholder:focus {
+  opacity: 0.9;
+}
+
 @media (max-width: 990px) {
   .periodic-table {
     max-width: 990px;
@@ -644,7 +693,49 @@ h2.liquid {
     width: 105px;
   }
 
-  #placeholder {
-    display: none;
+  h1 {
+    font-size: 50px;
+  }
+
+  h2 {
+    font-size: 40px;
+  }
+
+  h3 {
+    font-size: 36px;
+  }
+
+  h5 {
+    font-size: 20px;
+  }
+
+  .card-element-general {
+    width: auto;
+  }
+
+  .atomic-info {
+    height: auto;
+  }
+
+  .atomic-number {
+    font-size: 14px;
+  }
+
+  .atomic-mass {
+    font-size: 14px;
+  }
+
+  .element-name {
+    font-size: 14px;
+  }
+
+  .electron-configuration {
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 475px) {
+  .card-element-general {
+    width: 100%;
   }
 }

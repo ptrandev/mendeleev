@@ -479,6 +479,10 @@ h5 {
   font-size: 1.0vw;
 }
 
+h6 {
+  font-size: 0.75vw;
+}
+
 span {
   margin: 0;
 }
@@ -525,9 +529,13 @@ span {
   display: inline-block;
 }
 
-.card-element-label,
-card-element-boiling-point {
+.card-element-label {
   display: inline-block;
+}
+
+.card-element-boiling-point {
+  display: inline-block;
+  font-size: 0.75vw;
 }
 
 .elements-wrapper {
@@ -667,7 +675,7 @@ h2.liquid {
   opacity: 0.9;
 }
 
-@media (max-width: 990px) {
+@media (max-width: 1023px) {
   .periodic-table {
     max-width: 990px;
   }
@@ -706,7 +714,11 @@ h2.liquid {
   }
 
   h5 {
-    font-size: 20px;
+    font-size: 18px;
+  }
+
+  h6 {
+    font-size: 14px;
   }
 
   .card-element-general {
@@ -717,15 +729,10 @@ h2.liquid {
     height: auto;
   }
 
-  .atomic-number {
-    font-size: 14px;
-  }
-
-  .atomic-mass {
-    font-size: 14px;
-  }
-
-  .element-name {
+  .card-element-boiling-point,
+  .atomic-number,
+  .atomic-mass,
+  .atomic-name {
     font-size: 14px;
   }
 

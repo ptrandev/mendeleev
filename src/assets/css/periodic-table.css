@@ -732,7 +732,8 @@ h2.liquid {
   .card-element-boiling-point,
   .atomic-number,
   .atomic-mass,
-  .atomic-name {
+  .atomic-name,
+  .element-name {
     font-size: 14px;
   }
 

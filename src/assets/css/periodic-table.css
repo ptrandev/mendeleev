@@ -454,13 +454,20 @@ template {
 
 body {
   background-color: #222B2F;
-  font-family: 'Lato', sans-serif;
-  font-size: 16px;
+  color: #F8FAFC;
+  font-weight: 400;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+p,
+span {
+  margin: 0;
+  font-size: 0.85vw;
 }
 
 h1, h2, h3, h4, h5, h6 {
   margin: 0;
-  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
 }
 
 h1 {
@@ -475,50 +482,58 @@ h3 {
   font-size: 2.0vw;
 }
 
+h4 {
+  font-size: 1.5vw;
+}
+
 h5 {
   font-size: 1.0vw;
 }
 
 h6 {
-  font-size: 0.75vw;
-}
-
-span {
-  margin: 0;
+  font-size: 0.85vw;
 }
 
 .periodic-table {
   display: flex;
   width: 100%;
+  margin: auto;
 }
 
 .card-element-wrapper {
-  display: block;
+  display: none;
   width: 100%;
   height: 100%;
   color: #F8FAFC;
-  background-color: #3D4852;
-  border-width: 1px 2px 2px 2px;
+  background-color: #2A353A;
+  text-align: left;
+  grid-column: 4 / 14;
+  grid-row: 3 / 5;
   border-style: solid;
   border-color: #222B2F;
-  text-align: left;
-  grid-column: 3 / 13;
-  grid-row: 2 / 4;
+  border-width: 1px;
+  
 }
 
 .card-element-container {
-  display: block;
+  display: grid;
+  grid-template-columns: 5.4vw 5.4vw 5.4vw 5.4vw 5.4vw 5.4vw 5.4vw 5.4vw 5.4vw 5.4vw;
+  grid-template-rows: 5.4vw 5.4vw;
   width: 100%;
   height: 100%;
-  padding: 5px;
 }
 
 .card-element-general {
   display: inline-block;
+  grid-column: 1 / 5;
+  grid-row: 1 / 1;
   color: #222B2F;
-  padding: 5px;
-  width: 15.8vw;
+  border-right: 2px solid #222B2F;
+  border-bottom: 1px solid #222B2F;
+  width: 100%;
   text-align: center;
+  margin: 0px 1px 0px 1px;
+  opacity: 0.9;
 }
 
 .card-element-name {
@@ -527,27 +542,39 @@ span {
 
 .card-element-properties {
   display: inline-block;
+  grid-column: 5 / 9;
+  grid-row: 1 / 1;
+  padding: 2px 2px 0px 2px;
 }
 
-.card-element-label {
+.card-element-property {
+}
+
+.card-element-property-label {
   display: inline-block;
 }
 
-.card-element-boiling-point {
+.card-element-property-value {
   display: inline-block;
-  font-size: 0.75vw;
+}
+
+.card-element-summary {
+  display: inline-block;
+  grid-column: 1 / 11;
+  grid-row: 2 / 2;
+  padding: 2px 2px 0px 2px;
 }
 
 .elements-wrapper {
   display: inline-block;
-  width: 97.2vw;
+  width: 100%;
   margin: 0 auto;
 }
 
 .elements-container {
   display: grid;
-  grid-template-columns: 5.4vw 5.4vw 5.4vw 5.4vw 5.4vw 5.4vw 5.4vw 5.4vw 5.4vw 5.4vw 5.4vw 5.4vw 5.4vw 5.4vw 5.4vw 5.4vw 5.4vw 5.4vw;
-  grid-template-rows: 5.4vw 5.4vw 5.4vw 5.4vw 5.4vw 5.4vw 5.4vw;
+  grid-template-columns: 1.4vw 5.4vw 5.4vw 5.4vw 5.4vw 5.4vw 5.4vw 5.4vw 5.4vw 5.4vw 5.4vw 5.4vw 5.4vw 5.4vw 5.4vw 5.4vw 5.4vw 5.4vw 5.4vw 1.4vw;
+  grid-template-rows: 1.4vw 5.4vw 5.4vw 5.4vw 5.4vw 5.4vw 5.4vw 5.4vw;
   align-items: center;
   justify-content: center;
   width: 100%;
@@ -588,21 +615,21 @@ span {
 .atomic-number {
   display: inline-block;
   margin: 0px 0px 0px 2px;
-  font-size: 0.75vw;
   vertical-align: top;
 }
 
 .atomic-mass {
   float: right;
   margin: 0px 2px 0px 0px;
-  font-size: 0.75vw;
 }
 
+h1.gas,
 h2.gas {
   -webkit-text-stroke: 2px #222B2F;
   color: transparent;
 }
 
+h1.liquid,
 h2.liquid {
   -webkit-text-stroke: 2px #222B2F;
   color: #F8FAFC;
@@ -620,14 +647,13 @@ h2.liquid {
 
 .element-name {
   display: block;
-  font-size: 0.75vw;
 }
 
 .electron-configuration {
   display: block;
   margin: auto;
   text-align: center;
-  font-size: 0.5vw;
+  font-size: 0.55vw;
 }
 
 .nonmetal {
@@ -675,9 +701,18 @@ h2.liquid {
   opacity: 0.9;
 }
 
+.period-label {
+  display: block;
+}
+
+.group-label {
+  display: block;
+  align-self: end;
+}
+
 @media (max-width: 1023px) {
   .periodic-table {
-    max-width: 990px;
+    max-width: 1023px;
   }
 
   .period-container {
@@ -686,6 +721,10 @@ h2.liquid {
 
   .elements-wrapper {
     width: 100%;
+  }
+
+  .card-element-container {
+    display: block;
   }
 
   .elements-container {
@@ -713,37 +752,38 @@ h2.liquid {
     font-size: 36px;
   }
 
+  h4 {
+    font-size: 24px;
+  }
+
   h5 {
     font-size: 18px;
   }
 
   h6 {
-    font-size: 14px;
+    font-size: 16px;
   }
 
   .card-element-general {
-    width: auto;
+    width: 100%;
+    margin: 0;
   }
 
   .atomic-info {
     height: auto;
   }
 
-  .card-element-boiling-point,
-  .atomic-number,
-  .atomic-mass,
-  .atomic-name,
-  .element-name {
-    font-size: 14px;
+  p,
+  span {
+    font-size: 16px;
   }
 
   .electron-configuration {
     font-size: 10px;
   }
-}
 
-@media (max-width: 475px) {
-  .card-element-general {
-    width: 100%;
+  .period-label,
+  .group-label {
+    display: none;
   }
 }

@@ -471,23 +471,23 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  font-size: 3.0vw;
+  font-size: 4.0vw;
 }
 
 h2 {
-  font-size: 2.2vw;
+  font-size: 3.0vw;
 }
 
 h3 {
-  font-size: 2.0vw;
+  font-size: 2.2vw;
 }
 
 h4 {
-  font-size: 1.5vw;
+  font-size: 1.75vw;
 }
 
 h5 {
-  font-size: 1.0vw;
+  font-size: 1.25vw;
 }
 
 h6 {
@@ -498,6 +498,12 @@ h6 {
   display: flex;
   width: 100%;
   margin: auto;
+}
+
+.header {
+  grid-column: 3 / 19;
+  grid-row: 2 / 2;
+  align-self: start;
 }
 
 .card-element-wrapper {
@@ -545,9 +551,6 @@ h6 {
   grid-column: 5 / 9;
   grid-row: 1 / 1;
   padding: 2px 2px 0px 2px;
-}
-
-.card-element-property {
 }
 
 .card-element-property-label {
@@ -656,40 +659,44 @@ h2.liquid {
   font-size: 0.55vw;
 }
 
-.nonmetal {
-  background-color: #6CB2EB;
+.polyatomic {
+  background-color: #90CAF9;
+}
+
+.diatomic {
+  background-color: #80DEEA;
 }
 
 .alkali {
-  background-color: #EF5753;
+  background-color: #E57373;
 }
 
 .alkaline {
-  background-color: #FAAD63;
+  background-color: #FFB74D;
 }
 
 .transition {
-  background-color: #FFF382;
+  background-color: #FFF176;
 }
 
 .post-transition {
-  background-color: #51D88A;
+  background-color: #AED581;
 }
 
 .metalloid {
-  background-color: #64D5CA;
+  background-color: #80CBC4;
 }
 
 .noble {
-  background-color: #D6BBFC;
+  background-color: #CE93D8;
 }
 
 .lanthanide {
-  background-color: #B2B7FF;
+  background-color: #9FA8DA;
 }
 
 .actinide {
-  background-color: #FA7EA8;
+  background-color: #F48FB1;
 }
 
 .placeholder {
@@ -745,19 +752,19 @@ h2.liquid {
   }
 
   h2 {
-    font-size: 40px;
+    font-size: 50px;
   }
 
   h3 {
-    font-size: 36px;
+    font-size: 40px;
   }
 
   h4 {
-    font-size: 24px;
+    font-size: 36px;
   }
 
   h5 {
-    font-size: 18px;
+    font-size: 24px;
   }
 
   h6 {

@@ -3,10 +3,13 @@
     <div class="periodic-table">
       <div class="elements-wrapper">
         <div class="elements-container">
+          <div class="header">
+            <h1>Periodic Table of the Elements</h1>
+          </div>
           <div class="card-element-wrapper">
             <div class="card-element-container">
               <div class="card-element-general">
-                <h1 class="card-element-name"></h1>
+                <h2 class="card-element-name"></h2>
                 <h5 class="card-element-category"></h5>
               </div>
               <div class="card-element-properties">
@@ -22,20 +25,24 @@
                   <h6 class="card-element-property-label">Melting Point</h6>
                   <span class="card-element-property-value" id="melting-point"></span>
                 </div>
+                <div class="card-element-property">
+                  <h6 class="card-element-property-label">Period / Group</h6>
+                  <span class="card-element-property-value" id="period-group"></span>
+                </div>
               </div>
               <div class="card-element-summary">
                 <p id="summary"></p>
               </div>
             </div>
           </div>
-          <div class="element" :class="`${element.category}`" :id="element.name.toLowerCase()" v-bind:style="`grid-column-start: ${element.xpos + 1}; grid-row-start: ${element.ypos + 1}`" v-on:mouseover="displayInfo(element.phase, element.boil, element.melt, element.summary)" v-for="element in elements">
+          <div class="element" :class="`${element.category}`" :id="element.name.toLowerCase()" v-bind:style="`grid-column-start: ${element.xpos + 1}; grid-row-start: ${element.ypos + 1}`" v-on:mouseover="displayInfo(element.name, element.category, element.phase, element.boil, element.melt, element.ypos, element.xpos, element.summary)" v-for="element in elements">
             <div class="element-container">
               <div class="atomic-info">
                 <span class="atomic-number">{{element.number}}</span>
                 <span class="atomic-mass">{{element.atomic_mass | currency('', 3)}}</span>
               </div>
               <div class="element-info">
-                <h2 class="element-symbol" :class="element.phase.toLowerCase()">{{element.symbol}}</h2>
+                <h3 class="element-symbol" :class="element.phase.toLowerCase()">{{element.symbol}}</h3>
                 <span class="element-name">{{element.name}}</span>
               </div>
               <span class="electron-configuration">{{element.shells}}</span>
@@ -125,21 +132,17 @@
 </template>
 
 <script>
+import elements from '../assets/json/elements.json'
+
 export default {
   name: 'PeriodicTable',
-  data() {
+  data: function() {
     return {
-      elements: []
+      elements
     }
   },
-  created: function(){
-    this.$http.get('https://donutdeflector.me/api/periodic-table/periodic-table.json')
-      .then(function(response){
-        this.elements = response.data;
-      });
-  },
   methods: {
-    displayInfo(elementPhase, elementBoil, elementMelt, elementSummary) {
+    displayInfo(elementName, elementCategory, elementPhase, elementBoil, elementMelt, elementPeriod, elementGroup, elementSummary) {
       
       // displays element card on first hover
       if ($('.card-element-wrapper').css('display') == 'block') {
@@ -147,13 +150,9 @@ export default {
         $('.card-element-wrapper').css("display", "block");
       }
 
-      // grabs element and element category
-      let hoveredElement = event.currentTarget.id;
-      let elementCategory = event.currentTarget.className.replace('element', '');
-
       // adds element category class, inserts name of element, inserts element category
       $('.card-element-general').attr('class', 'card-element-general').addClass(elementCategory);
-      $('.card-element-name').html(hoveredElement);
+      $('.card-element-name').html(elementName);
       $('.card-element-category').html(elementCategory);
 
       // generate boiling point
@@ -174,6 +173,7 @@ export default {
       $('#phase').html(elementPhase);
       $('#boiling-point').html(elementBoil);
       $('#melting-point').html(elementMelt);
+      $('#period-group').html(elementPeriod + " / " + elementGroup);
       $('#summary').html(elementSummary);
     }
   }

@@ -494,6 +494,12 @@ h6 {
   font-size: 0.85vw;
 }
 
+button {
+  border: 0;
+  padding: 0.2rem 0.5rem;
+  font-size: 0.85vw;
+}
+
 .periodic-table {
   display: flex;
   width: 100%;
@@ -501,6 +507,7 @@ h6 {
 }
 
 .header {
+  width: auto;
   grid-column: 3 / 19;
   grid-row: 2 / 2;
   align-self: start;
@@ -534,12 +541,14 @@ h6 {
   grid-column: 1 / 5;
   grid-row: 1 / 1;
   color: #222B2F;
+  background-color: #F8FAFC;
   border-right: 2px solid #222B2F;
   border-bottom: 1px solid #222B2F;
   width: 100%;
   text-align: center;
   margin: 0px 1px 0px 1px;
   opacity: 0.9;
+  transition: opacity 0.3s ease;
 }
 
 .card-element-name {
@@ -659,43 +668,46 @@ h2.liquid {
   font-size: 0.55vw;
 }
 
-.polyatomic {
+.polyatomic-nonmetal {
   background-color: #90CAF9;
 }
 
-.diatomic {
+.diatomic-nonmetal {
   background-color: #80DEEA;
 }
 
-.alkali {
+.alkali-metal {
   background-color: #E57373;
 }
 
-.alkaline {
+.alkaline-earth-metal {
   background-color: #FFB74D;
 }
 
-.transition {
+.transition-metal {
   background-color: #FFF176;
 }
 
-.post-transition {
+.post-transition-metal {
   background-color: #AED581;
 }
 
-.metalloid {
+.metalloid,
+.metalloids {
   background-color: #80CBC4;
 }
 
-.noble {
+.noble-gas {
   background-color: #CE93D8;
 }
 
-.lanthanide {
+.lanthanide,
+.lanthanides {
   background-color: #9FA8DA;
 }
 
-.actinide {
+.actinide,
+.actinides {
   background-color: #F48FB1;
 }
 
@@ -717,6 +729,16 @@ h2.liquid {
   align-self: end;
 }
 
+.sorting-menu {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #222B2F;
+}
+
 @media (max-width: 1023px) {
   .periodic-table {
     max-width: 1023px;
@@ -728,6 +750,15 @@ h2.liquid {
 
   .elements-wrapper {
     width: 100%;
+  }
+
+  .header {
+    display: block;
+    width: 100%;
+  }
+
+  .card-element-wrapper {
+    height: auto;
   }
 
   .card-element-container {
@@ -781,7 +812,8 @@ h2.liquid {
   }
 
   p,
-  span {
+  span,
+  button {
     font-size: 16px;
   }
 

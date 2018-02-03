@@ -460,8 +460,11 @@ body {
 }
 
 p,
-span {
+span,
+ul,
+ol {
   margin: 0;
+  padding: 0;
   font-size: 0.85vw;
 }
 
@@ -547,7 +550,7 @@ button {
   width: 100%;
   text-align: center;
   margin: 0px 1px 0px 1px;
-  opacity: 0.9;
+  opacity: 0.85;
   transition: opacity 0.3s ease;
 }
 
@@ -556,14 +559,25 @@ button {
 }
 
 .card-element-properties {
-  display: inline-block;
+  display: flex;
+  align-items: center;
   grid-column: 5 / 9;
   grid-row: 1 / 1;
   padding: 2px 2px 0px 2px;
 }
 
+.card-element-properties ul {
+  list-style: none;
+}
+
+.card-element-property {
+  display: block;
+  width: 100%;
+}
+
 .card-element-property-label {
   display: inline-block;
+  font-weight: 700;
 }
 
 .card-element-property-value {
@@ -599,7 +613,7 @@ button {
   border: 1px solid #222B2F;
   color: #222B2F;
   background-color: #F8FAFC;
-  opacity: 0.9;
+  opacity: 0.85;
   transition: opacity 0.3s ease;
 }
 
@@ -665,7 +679,7 @@ h2.liquid {
   display: block;
   margin: auto;
   text-align: center;
-  font-size: 0.55vw;
+  font-size: 0.7vw;
 }
 
 .polyatomic-nonmetal {
@@ -717,7 +731,7 @@ h2.liquid {
 
 .placeholder:hover,
 .placeholder:focus {
-  opacity: 0.9;
+  opacity: 0.85;
 }
 
 .period-label {
@@ -737,6 +751,7 @@ h2.liquid {
   top: 0;
   width: 100%;
   background-color: #222B2F;
+  z-index: 1;
 }
 
 @media (max-width: 1023px) {
@@ -813,12 +828,14 @@ h2.liquid {
 
   p,
   span,
-  button {
+  button,
+  ul,
+  ol {
     font-size: 16px;
   }
 
   .electron-configuration {
-    font-size: 10px;
+    font-size: 14px;
   }
 
   .period-label,

@@ -1,5 +1,13 @@
 <template>
   <div class="PeriodicTable">
+    <div class="sorting-menu">
+      <button v-for="category in categories" type="button"
+      class="category-button" :class="category"
+      v-on:mouseover="emphasize(category)"
+      v-on:mouseout="deemphasize">
+      {{category.replace(/-/g, ' ').replace(/gas/g, 'gase') + 's'}}
+      </button>
+    </div>
     <div class="periodic-table">
       <div class="elements-container">
         <div class="header">
@@ -12,31 +20,47 @@
               <h5 class="card-element-category"></h5>
             </div>
             <div class="card-element-properties">
-              <div class="card-element-property">
-                <h6 class="card-element-property-label">Phase</h6>
-                <span class="card-element-property-value" id="phase"></span>
-              </div>
-              <div class="card-element-property">
-                <h6 class="card-element-property-label">Boiling Point</h6>
-                <span class="card-element-property-value" id="boiling-point"></span>
-              </div>
-              <div class="card-element-property">
-                <h6 class="card-element-property-label">Melting Point</h6>
-                <span class="card-element-property-value" id="melting-point"></span>
-              </div>
-              <div class="card-element-property">
-                <h6 class="card-element-property-label">Period / Group</h6>
-                <span class="card-element-property-value" id="period-group"></span>
-              </div>
+              <ul>
+                <li>
+                  <span class="card-element-property-label">Phase</span>
+                  <span class="card-element-propert-value" id="phase"></span>
+                </li>
+                <li>
+                  <span class="card-element-property-label">Boiling Point</span>
+                  <span id="boiling-point"></span>
+                </li>
+                <li>
+                  <span class="card-element-property-label">Melting Point</span>
+                  <span id="melting-point"></span>
+                </li>
+                <li>
+                  <span class="card-element-property-label">Number / Mass</span>
+                  <span id="number-mass"></span>
+                </li>
+                <li>
+                  <span class="card-element-property-label">Electron Configuration</span>
+                  <span id="electron-configuration"></span>
+                </li>
+                <li>
+                  <span class="card-element-property-label">Period / Group</span>
+                  <span id="period-group"></span>
+                </li>
+              </ul>
             </div>
             <div class="card-element-summary">
               <p id="summary"></p>
             </div>
           </div>
         </div>
-        <div class="element" :class="`${element.category.replace(/\s+/g, '-')}`" :id="element.name.toLowerCase()"
-        v-bind:style="`grid-column-start: ${element.xpos + 1}; grid-row-start: ${element.ypos + 1}`"
-        v-on:mouseover="displayInfo(element.name, element.category, element.phase, element.boil, element.melt, element.ypos, element.xpos, element.summary)"
+        <div class="element"
+        :class="`${element.category.replace(/\s+/g, '-')}`"
+        :id="element.name.toLowerCase()"
+        v-bind:style="`grid-column-start: ${element.xpos + 1};
+        grid-row-start: ${element.ypos + 1}`"
+        v-on:mouseover="displayInfo(element.name, element.category,
+        element.phase, element.boil, element.melt, element.number,
+        element.atomic_mass.toFixed(3), element.shells.join(' '), element.ypos,
+        element.xpos, element.summary)"
         v-for="element in elements">
           <div class="element-container">
             <div class="atomic-info">
@@ -47,7 +71,7 @@
               <h3 class="element-symbol" :class="element.phase.toLowerCase()">{{element.symbol}}</h3>
               <span class="element-name">{{element.name}}</span>
             </div>
-            <span class="electron-configuration">{{element.shells}}</span>
+            <span class="electron-configuration">{{element.shells.join(' ')}}</span>
           </div>
         </div>
         <div class="period-label" :style="`grid-column-start: 1; grid-row-start: 2;`">
@@ -129,14 +153,6 @@
         <div class="element actinide placeholder" :style="`grid-column-start: 4; grid-row-start: 8`"></div>
       </div>
     </div>
-    <div class="sorting-menu">
-      <button v-for="category in categories" type="button"
-      class="category-button" :class="category"
-      v-on:mouseover="emphasize(category)"
-      v-on:mouseout="deemphasize">
-      {{category.replace(/-/g, ' ').replace(/gas/g, 'gase') + 's'}}
-      </button>
-    </div>
   </div>
 </template>
 
@@ -163,7 +179,20 @@ export default {
     }
   },
   methods: {
-    displayInfo(elementName, elementCategory, elementPhase, elementBoil, elementMelt, elementPeriod, elementGroup, elementSummary) {
+    emphasize(category) {
+      category = '.' + category;
+      $('.element').css('opacity', '0.6');
+      $('.category-button').css('opacity', '0.6');
+      $(category).css('opacity', '1.0');
+    },
+    deemphasize() {
+      $('.category-button').css('opacity', '');
+      $('.element').css('opacity', '');
+      $('.card-element-general').css('opacity', '');
+    },
+    displayInfo(elementName, elementCategory, elementPhase, elementBoil,
+    elementMelt, elementNumber, elementMass, elementElectronConfiguration,
+    elementPeriod, elementGroup, elementSummary) {
       
       // displays element card on first hover
       if ($('.card-element-wrapper').css('display') != 'block') {
@@ -189,23 +218,15 @@ export default {
         elementMelt = (elementMelt) + '&#176;K / ' + (elementMelt - 273.15).toFixed(3) + '&#176;C';
       };
 
-      // displays element phase, boiling point, melting point, and summary
+      // displays element phase, boiling point, melting point, atomic number,
+      // atomic mass and summary
       $('#phase').html(elementPhase);
       $('#boiling-point').html(elementBoil);
       $('#melting-point').html(elementMelt);
+      $('#number-mass').html(elementNumber + " / " + elementMass);
+      $('#electron-configuration').html(elementElectronConfiguration);
       $('#period-group').html(elementPeriod + " / " + elementGroup);
       $('#summary').html(elementSummary);
-    },
-    emphasize(category) {
-      category = '.' + category;
-      $('.element').css('opacity', '0.5');
-      $('.category-button').css('opacity', '0.5');
-      $(category).css('opacity', '1.0');
-    },
-    deemphasize() {
-      $('.category-button').css('opacity', '');
-      $('.element').css('opacity', '');
-      $('.card-element-general').css('opacity', '');
     }
   }
 }

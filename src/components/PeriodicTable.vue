@@ -47,6 +47,8 @@
                 </li>
               </ul>
             </div>
+            <div id="bohr-model-container">
+            </div>
             <div class="card-element-summary">
               <p id="summary"></p>
             </div>

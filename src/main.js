@@ -31,9 +31,6 @@ new Vue({
   router,
   template: `
     <div id="app">
-      <ul>
-      <li><router-link to="/mendeleev">Periodic Table</router-link></li>
-      </ul>
       <router-view></router-view>
     </div>`,
 }).$mount('#app');

@@ -571,21 +571,20 @@ button {
 }
 
 .card-element-property {
-  display: block;
   width: 100%;
 }
 
 .card-element-property-label {
-  display: inline-block;
   font-weight: 700;
 }
 
-.card-element-property-value {
-  display: inline-block;
+.bohr-model-container {
+  width: 100%;
+  grid-column: 11 / 11;
+  grid-row: 1 / 1;
 }
 
 .card-element-summary {
-  display: inline-block;
   grid-column: 1 / 11;
   grid-row: 2 / 2;
   padding: 2px 2px 0px 2px;
@@ -755,6 +754,38 @@ h2.liquid {
 }
 
 @media (max-width: 1023px) {
+  h1 {
+    font-size: 50px;
+  }
+
+  h2 {
+    font-size: 50px;
+  }
+
+  h3 {
+    font-size: 40px;
+  }
+
+  h4 {
+    font-size: 36px;
+  }
+
+  h5 {
+    font-size: 24px;
+  }
+
+  h6 {
+    font-size: 16px;
+  }
+
+  p,
+  span,
+  button,
+  ul,
+  ol {
+    font-size: 16px;
+  }
+
   .periodic-table {
     max-width: 1023px;
   }
@@ -793,30 +824,6 @@ h2.liquid {
     width: 105px;
   }
 
-  h1 {
-    font-size: 50px;
-  }
-
-  h2 {
-    font-size: 50px;
-  }
-
-  h3 {
-    font-size: 40px;
-  }
-
-  h4 {
-    font-size: 36px;
-  }
-
-  h5 {
-    font-size: 24px;
-  }
-
-  h6 {
-    font-size: 16px;
-  }
-
   .card-element-general {
     width: 100%;
     margin: 0;
@@ -824,14 +831,6 @@ h2.liquid {
 
   .atomic-info {
     height: auto;
-  }
-
-  p,
-  span,
-  button,
-  ul,
-  ol {
-    font-size: 16px;
   }
 
   .electron-configuration {

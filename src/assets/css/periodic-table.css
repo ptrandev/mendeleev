@@ -453,6 +453,16 @@ template {
   --color-gray: #22292F;
   --color-gray-2: #2A353A;
   --color-white: #F8FAFC;
+  --color-blue: #90CAF9;
+  --color-cyan: #80DEEA;
+  --color-red: #E57373;
+  --color-orange: #FFB74D;
+  --color-yellow: #FFF176;
+  --color-green: #AED581;
+  --color-teal: #80CBC4;
+  --color-purple: #CE93D8;
+  --color-lavender: #9FA8DA;
+  --color-pink: #F48FB1;
 }
 
 /* All Elements */
@@ -751,46 +761,46 @@ h2.liquid {
 /* Element Category Colors */
 
 .polyatomic-nonmetal {
-  background-color: #90CAF9;
+  background-color: var(--color-blue);
 }
 
 .diatomic-nonmetal {
-  background-color: #80DEEA;
+  background-color: var(--color-cyan);
 }
 
 .alkali-metal {
-  background-color: #E57373;
+  background-color: var(--color-red);
 }
 
 .alkaline-earth-metal {
-  background-color: #FFB74D;
+  background-color: var(--color-orange);
 }
 
 .transition-metal {
-  background-color: #FFF176;
+  background-color: var(--color-yellow);
 }
 
 .post-transition-metal {
-  background-color: #AED581;
+  background-color: var(--color-green);
 }
 
 .metalloid,
 .metalloids {
-  background-color: #80CBC4;
+  background-color: var(--color-teal);
 }
 
 .noble-gas {
-  background-color: #CE93D8;
+  background-color: var(--color-purple);
 }
 
 .lanthanide,
 .lanthanides {
-  background-color: #9FA8DA;
+  background-color: var(--color-lavender);
 }
 
 .actinide,
 .actinides {
-  background-color: #F48FB1;
+  background-color: var(--color-pink);
 }
 
 .unknown {

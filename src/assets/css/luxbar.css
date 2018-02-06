@@ -46,7 +46,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  height: 58px; }
+  height: 40px; }
 
 .luxbar-menu-left .luxbar-navigation,
 .luxbar-menu-left .luxbar-header {
@@ -60,7 +60,7 @@
   padding: 18px 24px 18px 24px; }
 
 .luxbar-menu {
-  min-height: 58px;
+  min-height: 40px;
   transition: 0.6s ease;
   width: 100%; }
 
@@ -78,7 +78,7 @@
   cursor: pointer; }
 
 .luxbar-item {
-  height: 58px; }
+  height: 40px; }
   .luxbar-item a {
     padding: 18px 24px 18px 24px;
     display: block; }
@@ -99,7 +99,7 @@
   display: none; }
   .luxbar-checkbox:not(:checked) ~ .luxbar-menu {
     overflow: hidden;
-    height: 58px; }
+    height: 40px; }
   .luxbar-checkbox:checked ~ .luxbar-menu {
     transition: height 0.6s ease;
     height: 100vh;
@@ -108,7 +108,7 @@
 .dropdown {
   position: relative;
   height: auto;
-  min-height: 58px; }
+  min-height: 40px; }
   .dropdown:hover > ul {
     position: relative;
     display: block;
@@ -146,7 +146,7 @@
   .luxbar-checkbox:not(:checked) ~ .luxbar-menu {
     overflow: visible; }
   .luxbar-checkbox:checked ~ .luxbar-menu {
-    height: 58px; }
+    height: 40px; }
 
   .luxbar-menu .luxbar-item {
     border-top: 0; }
@@ -155,11 +155,11 @@
     margin-right: auto; }
 
   .dropdown {
-    height: 58px; }
+    height: 40px; }
     .dropdown:hover > ul {
       position: absolute;
       left: 0;
-      top: 58px;
+      top: 40px;
       padding: 0; }
     .dropdown > ul {
       display: none; }

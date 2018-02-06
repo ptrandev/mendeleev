@@ -1,13 +1,23 @@
 <template>
   <div class="PeriodicTable">
-    <div class="sorting-menu">
-      <button v-for="category in categories" type="button"
-      class="category-button" :class="category"
-      v-on:mouseover="emphasize(category)"
-      v-on:mouseout="deemphasize">
-      {{category.replace(/-/g, ' ').replace(/gas/g, 'gase') + 's'}}
-      </button>
+    <header id="luxbar" class="luxbar-fixed">
+    <input type="checkbox" class="luxbar-checkbox" id="luxbar-checkbox"/>
+    <div class="luxbar-menu luxbar-menu-right luxbar-menu-dark">
+        <ul class="luxbar-navigation">
+            <li class="luxbar-header">
+                <a href="#" class="luxbar-brand">Mendeleev</a>
+                <label class="luxbar-hamburger luxbar-hamburger-doublespin" 
+                id="luxbar-hamburger" for="luxbar-checkbox"><span></span>
+                </label>
+            </li>
+            <li v-for="category in categories" :class="category"
+            class="luxbar-item category-link" v-on:mouseover="emphasize(category)"
+            v-on:mouseout="deemphasize">
+              <a href="#">{{category.replace(/-/g, ' ').replace(/gas/g, 'gase') + 's'}}</a>
+            </li>
+        </ul>
     </div>
+</header>
     <div class="periodic-table">
       <div class="elements-container">
         <div class="header">
@@ -55,7 +65,7 @@
           </div>
         </div>
         <div class="element"
-        :class="`${element.category.replace(/\s+/g, '-')}`"
+        :class="`${element.category.replace(/probably|predicted to be/g, '').replace(/\s+/g, '-').replace(/,-/g, ' ')}`"
         :id="element.name.toLowerCase()"
         v-bind:style="`grid-column-start: ${element.xpos + 1};
         grid-row-start: ${element.ypos + 1}`"
@@ -182,13 +192,19 @@ export default {
   },
   methods: {
     emphasize(category) {
+      // convert category variable to class
       category = '.' + category;
+
+      // deemphasize .element and .category-link elements
       $('.element').css('opacity', '0.6');
-      $('.category-button').css('opacity', '0.6');
+      $('.category-link').css('opacity', '0.6');
+
+      // emphasize elements of the selected category
       $(category).css('opacity', '1.0');
     },
     deemphasize() {
-      $('.category-button').css('opacity', '');
+      // revert emphasis and deemphasis
+      $('.category-link').css('opacity', '');
       $('.element').css('opacity', '');
       $('.card-element-general').css('opacity', '');
     },

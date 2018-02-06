@@ -7,6 +7,7 @@ import VueResource from 'vue-resource'
 import PeriodicTable from './components/PeriodicTable'
 import Vue2Filters from 'vue2-filters'
 
+require('./assets/css/luxbar.css');
 require('./assets/css/periodic-table.css');
 
 Vue.use(VueResource)

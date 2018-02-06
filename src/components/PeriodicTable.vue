@@ -1,69 +1,11 @@
 <template>
   <div class="PeriodicTable">
-    <header id="luxbar" class="luxbar-fixed">
-    <input type="checkbox" class="luxbar-checkbox" id="luxbar-checkbox"/>
-    <div class="luxbar-menu luxbar-menu-right luxbar-menu-dark">
-        <ul class="luxbar-navigation">
-            <li class="luxbar-header">
-                <a href="#" class="luxbar-brand">Mendeleev</a>
-                <label class="luxbar-hamburger luxbar-hamburger-doublespin" 
-                id="luxbar-hamburger" for="luxbar-checkbox"><span></span>
-                </label>
-            </li>
-            <li v-for="category in categories" :class="category"
-            class="luxbar-item category-link" v-on:mouseover="emphasize(category)"
-            v-on:mouseout="deemphasize">
-              <a href="#">{{category.replace(/-/g, ' ').replace(/gas/g, 'gase') + 's'}}</a>
-            </li>
-        </ul>
-    </div>
-</header>
     <div class="periodic-table">
       <div class="elements-container">
         <div class="header">
           <h1>Periodic Table of the Elements</h1>
         </div>
-        <div class="card-element-wrapper">
-          <div class="card-element-container">
-            <div class="card-element-general">
-              <h2 class="card-element-name"></h2>
-              <h5 class="card-element-category"></h5>
-            </div>
-            <div class="card-element-properties">
-              <ul>
-                <li>
-                  <span class="card-element-property-label">Phase</span>
-                  <span class="card-element-propert-value" id="phase"></span>
-                </li>
-                <li>
-                  <span class="card-element-property-label">Boiling Point</span>
-                  <span id="boiling-point"></span>
-                </li>
-                <li>
-                  <span class="card-element-property-label">Melting Point</span>
-                  <span id="melting-point"></span>
-                </li>
-                <li>
-                  <span class="card-element-property-label">Number / Mass</span>
-                  <span id="number-mass"></span>
-                </li>
-                <li>
-                  <span class="card-element-property-label">Electron Configuration</span>
-                  <span id="electron-configuration"></span>
-                </li>
-                <li>
-                  <span class="card-element-property-label">Period / Group</span>
-                  <span id="period-group"></span>
-                </li>
-              </ul>
-            </div>
-            <div id="bohr-model-container">
-            </div>
-            <div class="card-element-summary">
-              <p id="summary"></p>
-            </div>
-          </div>
-        </div>
+        <ElementCard/>
         <div class="element"
         :class="`${element.category.replace(/probably|predicted to be/g, '').replace(/\s+/g, '-').replace(/,-/g, ' ')}`"
         :id="element.name.toLowerCase()"
@@ -170,44 +112,19 @@
 
 <script>
 import elements from '../assets/json/elements.json'
+import ElementCard from './shared/ElementCard'
 
 export default {
   name: 'PeriodicTable',
   data: function() {
     return {
-      elements,
-      categories: [
-        'polyatomic-nonmetal',
-        'diatomic-nonmetal',
-        'alkali-metal',
-        'alkaline-earth-metal',
-        'transition-metal',
-        'post-transition-metal',
-        'metalloid',
-        'noble-gas',
-        'lanthanide',
-        'actinide'
-      ]
+      elements
     }
   },
+  components: {
+    ElementCard
+  },
   methods: {
-    emphasize(category) {
-      // convert category variable to class
-      category = '.' + category;
-
-      // deemphasize .element and .category-link elements
-      $('.element').css('opacity', '0.6');
-      $('.category-link').css('opacity', '0.6');
-
-      // emphasize elements of the selected category
-      $(category).css('opacity', '1.0');
-    },
-    deemphasize() {
-      // revert emphasis and deemphasis
-      $('.category-link').css('opacity', '');
-      $('.element').css('opacity', '');
-      $('.card-element-general').css('opacity', '');
-    },
     displayInfo(elementName, elementCategory, elementPhase, elementBoil,
     elementMelt, elementNumber, elementMass, elementElectronConfiguration,
     elementPeriod, elementGroup, elementSummary) {

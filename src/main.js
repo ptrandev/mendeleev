@@ -4,6 +4,7 @@ import Vue from 'vue'
 import App from './App'
 import VueRouter from 'vue-router'
 import VueResource from 'vue-resource'
+import SortingMenu from './components/SortingMenu'
 import PeriodicTable from './components/PeriodicTable'
 import Vue2Filters from 'vue2-filters'
 
@@ -20,7 +21,10 @@ const router = new VueRouter({
   routes: [
     {
       path:'/mendeleev',
-      component: PeriodicTable
+      components: {
+        default: PeriodicTable,
+        menu: SortingMenu
+      }
     }
   ]
 });
@@ -33,5 +37,6 @@ new Vue({
   template: `
     <div id="app">
       <router-view></router-view>
+      <router-view name="menu"></router-view>
     </div>`,
 }).$mount('#app');

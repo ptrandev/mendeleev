@@ -118,7 +118,20 @@ export default {
   name: 'PeriodicTable',
   data: function() {
     return {
-      elements
+      elements,
+      atomicConfig: {
+        containerId: "#atomic-model",
+        numElectrons: 1,
+        idNumber: 1,
+        nucleusColor: '#1B2126',
+        electronRadius: 3,
+        electronColor: '#90CAF9',
+        orbitalSpacing: 9,
+        orbitalWidth: 1,
+        orbitalColor: '#1B2126'
+      },
+      atomGenerated: false,
+      myAtom: null
     }
   },
   components: {
@@ -162,6 +175,16 @@ export default {
       $('#electron-configuration').html(elementElectronConfiguration);
       $('#period-group').html(elementPeriod + " / " + elementGroup);
       $('#summary').html(elementSummary);
+
+      // create the atom element if it hasn't been creeated yet
+      if (this.atomGenerated == false) {
+        this.myAtom = new Atom(this.atomicConfig);
+        this.atomGenerated = true;
+        return this.myAtom;
+      }
+
+      // set number of electrons for atomic model
+      this.myAtom.setNumElectrons(elementNumber);
     }
   }
 }

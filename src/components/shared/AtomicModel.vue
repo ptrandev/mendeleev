@@ -1,10 +1,16 @@
 <template>
-  <div class="atomic-model">
+  <div id="atomic-model">
   </div>
 </template>
 
 <script>
+
+
 export default {
-  name: 'AtomicModel'
+  name: 'AtomicModel',
+  data: function() {
+    return {
+    }
+  }
 }
 </script>

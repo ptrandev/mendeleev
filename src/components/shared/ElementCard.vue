@@ -33,10 +33,10 @@
           </li>
         </ul>
       </div>
-      <AtomicModel/>
       <div class="card-element-summary">
       <p id="summary"></p>
       </div>
+      <AtomicModel/>
     </div>
   </div>  
 </template>

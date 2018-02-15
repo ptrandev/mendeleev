@@ -137,7 +137,18 @@ export default {
   components: {
     ElementCard
   },
+  mounted: function() {
+    this.loadJs('../src/assets/js/atomicBohrModel.min.js')
+  },
   methods: {
+    loadJs(url, callback) {
+      jQuery.ajax({
+      url: url,
+      dataType: 'script',
+      success: callback,
+      async: true
+      });
+    },
     displayInfo(elementName, elementCategory, elementPhase, elementBoil,
     elementMelt, elementNumber, elementMass, elementElectronConfiguration,
     elementPeriod, elementGroup, elementSummary) {

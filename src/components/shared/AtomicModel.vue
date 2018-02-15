@@ -4,8 +4,6 @@
 </template>
 
 <script>
-
-
 export default {
   name: 'AtomicModel',
   data: function() {

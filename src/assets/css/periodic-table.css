@@ -892,8 +892,8 @@ h2.liquid {
   }
 
   #atomic-model {
-    max-height: 300px;
-    max-width: 300px;
+    height: 300px;
+    width: 300px;
     grid-column: 9 / 11;
     grid-row: 1 / 3;
   }

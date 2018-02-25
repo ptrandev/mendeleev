@@ -12,6 +12,7 @@ window.$ = window.jQuery = require('jquery');
 
 require('./assets/css/luxbar.css');
 require('./assets/css/periodic-table.css');
+require('./../node_modules/atomic-bohr-model/dist/atomicBohrModel.min.js');
 
 Vue.use(VueResource)
 Vue.use(VueRouter)

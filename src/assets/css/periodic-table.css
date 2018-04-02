@@ -482,13 +482,28 @@ body {
 
 /* Text */
 
+a,
 p,
 span,
 ul,
 ol {
   margin: 0;
   padding: 0;
-  font-size: 0.85vw;
+  font-size: 0.875vw;
+}
+
+a {
+  color: var(--color-cyan);
+  transition: color 0.3s ease;
+}
+
+a:focus,
+a:hover {
+  color: var(--color-teal);
+}
+
+ul {
+  list-style-position: inside;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -507,7 +522,7 @@ h2 {
 }
 
 h3 {
-  font-size: 2.2vw;
+  font-size: 2.75vw;
 }
 
 h4 {
@@ -519,7 +534,7 @@ h5 {
 }
 
 h6 {
-  font-size: 0.85vw;
+  font-size: 0.875vw;
 }
 
 /* Buttons */
@@ -530,11 +545,24 @@ button {
   font-size: 0.85vw;
 }
 
+/* Miscellaneous */
+
+.shadow {
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+/* App Container */
+
+#app {
+  display: flex;
+  flex-direction: column;
+}
+
 /* Luxbar */
 
 .luxbar-checkbox:not(:checked) ~ .luxbar-menu {
-  min-height: 45px;
-  height: 45px;
+  min-height: 2.5vw;
+  height: 2.5vw;
 }
 
 .luxbar-menu-dark {
@@ -542,7 +570,7 @@ button {
 }
 
 .luxbar-header {
-  height: 45px;
+  height: 2.5vw;
 }
 
 .luxbar-brand {
@@ -552,19 +580,25 @@ button {
 .luxbar-item {
   display: flex;
   align-items: center;
-  height: 45px;
+  height: 2.5vw;
   color: #000;
   text-align: center;
 }
 
 .luxbar-item a {
   padding: 0px 7px;
+  color: var(--color-black);
+}
+
+.luxbar-item a:focus,
+.luxbar-item a:hover {
+  color: var(--color-black);
 }
 
 /* Periodic Table */
 
 .periodic-table {
-  padding-top: 60px;
+  padding-top: 3.5vw;
   display: flex;
   width: 100%;
   margin: auto;
@@ -577,37 +611,156 @@ button {
   align-self: start;
 }
 
+.elements-wrapper {
+  display: inline-block;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.elements-container {
+  display: grid;
+  grid-template-columns: 1.4vw 5.4vw 5.4vw 5.4vw 5.4vw 5.4vw 5.4vw 5.4vw 5.4vw 5.4vw 5.4vw 5.4vw 5.4vw 5.4vw 5.4vw 5.4vw 5.4vw 5.4vw 5.4vw 1.4vw;
+  grid-template-rows: 1.4vw 6.2vw 6.2vw 6.2vw 6.2vw 6.2vw 6.2vw 6.2vw 0 6.2vw 6.2vw;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  text-align: center;
+}
+
+.element {
+  height: 100%;
+  width: 100%;
+  border: 1px solid var(--color-gray);
+  color: var(--color-gray);
+  background-color: var(--color-white);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  opacity: 0.85;
+  transition: all 0.3s ease;
+  z-index: 0;
+}
+
+.element:hover,
+.element:focus {
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  opacity: 1;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.element:last-child {
+  margin-right: 0;
+}
+
+.element-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0.1vw;
+  height: 100%;
+}
+
+.atomic-info {
+  display: block;
+  text-align: left;
+  width: 100%;
+  height: 1vw;
+}
+
+.atomic-number {
+  display: inline-block;
+  margin: 0px 0px 0px 2px;
+  vertical-align: top;
+}
+
+.atomic-mass {
+  float: right;
+  margin: 0px 2px 0px 0px;
+}
+
+h1.gas,
+h2.gas {
+  -webkit-text-stroke: 2px var(--color-gray);
+  color: transparent;
+}
+
+h1.liquid,
+h2.liquid {
+  -webkit-text-stroke: 2px var(--color-gray);
+  color: var(--color-white);
+}
+
+
+.element-symbol,
+.element-name {
+  display: block;
+  margin: auto;
+}
+
+.electron-configuration {
+  display: block;
+  margin: auto;
+  font-size: 0.675vw;
+}
+
+.placeholder {
+  cursor: default !important;
+  box-shadow: unset;
+}
+
+.placeholder:hover,
+.placeholder:focus {
+  opacity: 0.85;
+  box-shadow: unset;
+}
+
+.period-label {
+  display: block;
+}
+
+.group-label {
+  display: block;
+  align-self: end;
+  z-index: 3;
+}
+
+/* Element Card */
 .card-element-wrapper {
   display: none;
   width: 100%;
   height: 100%;
+  margin: 0;
   color: var(--color-white);
-  background-color: var(--color-gray-2);
   text-align: left;
   grid-column: 4 / 14;
   grid-row: 3 / 5;
-  border-style: solid;
-  border-color: var(--color-gray);
-  border-width: 1px;
-  
+  z-index: 1;
 }
 
 .card-element-container {
   display: grid;
   grid-template-columns: 5.4vw 5.4vw 5.4vw 5.4vw 5.4vw 5.4vw 5.4vw 5.4vw 5.4vw 5.4vw;
-  grid-template-rows: 5.4vw 5.4vw;
+  grid-template-rows: 6.2vw 6.2vw;
   width: 100%;
   height: 100%;
+  margin: auto;
+  background-color: var(--color-gray-2);
+  border-style: solid;
+  border-color: var(--color-gray);
+  border-width: 1px;
 }
 
 .card-element-general {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   grid-column: 1 / 5;
   grid-row: 1 / 1;
   color: var(--color-gray);
   background-color: var(--color-white);
   border-right: 2px solid var(--color-gray);
-  border-bottom: 1px solid var(--color-gray);
+  border-bottom: 2px solid var(--color-gray);
   width: 100%;
+  height: 100%;
   text-align: center;
   margin: 0px 1px 0px 1px;
   opacity: 0.85;
@@ -656,113 +809,152 @@ button {
   padding: 2px 2px 0px 2px;
 }
 
-.elements-wrapper {
-  display: inline-block;
+/* Tutorial Card */
+
+.card-tutorial-wrapper {
   width: 100%;
-  margin: 0 auto;
-}
-
-.elements-container {
-  display: grid;
-  grid-template-columns: 1.4vw 5.4vw 5.4vw 5.4vw 5.4vw 5.4vw 5.4vw 5.4vw 5.4vw 5.4vw 5.4vw 5.4vw 5.4vw 5.4vw 5.4vw 5.4vw 5.4vw 5.4vw 5.4vw 1.4vw;
-  grid-template-rows: 1.4vw 5.4vw 5.4vw 5.4vw 5.4vw 5.4vw 5.4vw 5.4vw;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  text-align: center;
-}
-
-.element {
-  height: 5.4vw;
-  width: 5.4vw;
-  border: 1px solid var(--color-gray);
-  color: var(--color-gray);
-  background-color: var(--color-white);
-  opacity: 0.85;
-  transition: opacity 0.3s ease;
-}
-
-.element:hover,
-.element:focus {
-  opacity: 1;
-  cursor: pointer;
-}
-
-.element:last-child {
-  margin-right: 0;
-}
-
-.element-container {
-  padding: 2px;
-}
-
-.atomic-info {
-  display: block;
-  text-align: left;
-  width: 100%;
-  height: 1vw;
-}
-
-.atomic-number {
-  display: inline-block;
-  margin: 0px 0px 0px 2px;
-  vertical-align: top;
-}
-
-.atomic-mass {
-  float: right;
-  margin: 0px 2px 0px 0px;
-}
-
-h1.gas,
-h2.gas {
-  -webkit-text-stroke: 2px var(--color-gray);
-  color: transparent;
-}
-
-h1.liquid,
-h2.liquid {
-  -webkit-text-stroke: 2px var(--color-gray);
+  height: 100%;
+  margin: 0;
   color: var(--color-white);
+  text-align: left;
+  grid-column: 4 / 14;
+  grid-row: 3 / 5;
 }
 
-.element-info {
+.card-tutorial-container {
+  display: grid;
+  grid-template-columns: 5.4vw 5.4vw 5.4vw 5.4vw 5.4vw 5.4vw 5.4vw 5.4vw 5.4vw 5.4vw;
+  grid-template-rows: 6.2vw 6.2vw;
   width: 100%;
-  text-align: center;
-}
-
-.element-symbol {
-  display: block;
-  width: 100%;
-}
-
-.element-name {
-  display: block;
-}
-
-.electron-configuration {
-  display: block;
+  height: 100%;
   margin: auto;
+  border-style: solid;
+  border-color: var(--color-gray);
+  border-width: 1px;
+}
+
+.card-tutorial-intro {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  grid-column: 1 / 7;
+  grid-row: 1/ 3;
+  margin-left: 1vw;
+  background-color: var(--color-gray-2); 
+  height: calc(100% - 3.6vw);
+}
+
+.card-tutorial-intro h3 {
   text-align: center;
-  font-size: 0.675vw;
 }
 
-.placeholder {
-  cursor: default !important;
+.card-tutorial-element-container {
+  display: flex;
+  justify-content: flex-end;
+  grid-column: 7 / 12;
+  grid-row: 1 / 3;
+  margin-right: 1vw;
 }
 
-.placeholder:hover,
-.placeholder:focus {
+.card-tutorial-element {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: calc(10.8vw - 3.6vw);
+  height: calc(100% - 3.6vw);
+  padding: 0.2vw;
   opacity: 0.85;
+  color: var(--color-black);
+  background-color: var(--color-teal);
 }
 
-.period-label {
-  display: block;
+.card-tutorial-element span {
+  font-size: 1.25vw;
 }
 
-.group-label {
-  display: block;
-  align-self: end;
+.card-tutorial-element .atomic-info {
+  height: 1.25vw;
+}
+
+.card-tutorial-element .electron-configuration-container span {
+  font-size: 1vw;
+}
+
+.card-tutorial-element-key-container {
+  margin-right: 0.25vw;
+}
+
+.card-tutorial-element-key {
+  height: calc(100% - 3.6vw);
+  padding: 0.2vw 0;
+}
+
+.card-tutorial-element-key span {
+  display: flex;
+  align-items: center;
+}
+
+.card-tutorial-element-key span:after {
+  content: '';
+  display: inline-block;
+  height: 0.75vw;
+  width: 0.75vw;
+  background-image: url('../img/iconmonstr-arrow-37.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-left: 0.25vw;
+}
+
+.card-tutorial-element-key-1,
+.card-tutorial-element-key-2 {
+  display: flex;
+  align-items: flex-end;
+  height: 50%;
+}
+
+.card-tutorial-element-key-1 {
+  padding-top: 0.15vw;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-tutorial-element-key-2 {
+  padding-bottom: 0.05vw;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.card-tutorial-element-key-2 span:first-of-type {
+  margin-bottom: 0.3vw;
+}
+
+/* Footer */
+
+.footer-wrapper {
+  margin: auto;
+  margin-top: 1vw;
+  margin-bottom: 1vw;
+}
+
+.footer-container {
+  display: flex;
+  padding: 10px;
+  background-color: var(--color-gray-2);
+  text-align: center;
+  margin: auto;
+  max-width: 50vw;
+}
+
+.footer-container div {
+  padding-bottom: 0;
+  padding-right: 10px;
+}
+
+.footer-container div:last-child {
+  padding-bottom: 0;
+  padding-right: 0;
 }
 
 /* Element Category Colors */
@@ -814,9 +1006,17 @@ h2.liquid {
   background-color: var(--color-white);
 }
 
+/* Media Queries */
+
+@media (min-width: 735px) and (max-width: 839px) {
+  .actinide.placeholder {
+    display: none;
+  }
+}
+
 @media (max-width: 1023px) {
   h1 {
-    font-size: 50px;
+    font-size: 60px;
   }
 
   h2 {
@@ -824,7 +1024,7 @@ h2.liquid {
   }
 
   h3 {
-    font-size: 40px;
+    font-size: 45px;
   }
 
   h4 {
@@ -839,6 +1039,7 @@ h2.liquid {
     font-size: 16px;
   }
 
+  a,
   p,
   span,
   button,
@@ -847,8 +1048,22 @@ h2.liquid {
     font-size: 16px;
   }
 
+  .luxbar-checkbox:not(:checked) ~ .luxbar-menu {
+    min-height: 54px;
+    height: 54px;
+  }
+  
+  .luxbar-header {
+    height: 54px;
+  }
+  
+  .luxbar-item {
+    height: 54px;
+  }
+
   .periodic-table {
-    max-width: 1023px;
+    padding-top: 64px;
+    max-width: 944px;
   }
 
   .period-container {
@@ -864,12 +1079,19 @@ h2.liquid {
     width: 100%;
   }
 
+  .card-tutorial-wrapper {
+    display: none;
+  }
+
   .card-element-wrapper {
     height: auto;
+    margin: 5px 0 2px 0;
+    padding: 0 2px 0;
   }
 
   .card-element-container {
     display: block;
+    max-width: 768px;
     padding: 5px 5px 0 5px;
   }
 
@@ -887,7 +1109,7 @@ h2.liquid {
 
   .element {
     display: inline-block;
-    height: 105px;
+    height: 110px;
     width: 105px;
   }
 
@@ -909,5 +1131,19 @@ h2.liquid {
   .period-label,
   .group-label {
     display: none;
+  }
+
+  .footer-wrapper {
+    margin: 4px;
+  }
+
+  .footer-container {
+    display: block;
+    max-width: 512px;
+  }
+
+  .footer-container div {
+    padding-bottom: 10px;
+    padding-right: 0;
   }
 }

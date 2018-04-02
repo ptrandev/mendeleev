@@ -48,13 +48,13 @@ export default {
       $('.category-link').css('opacity', '0.6');
 
       // emphasize elements of the selected category
-      $(category).css('opacity', '1.0');
+      $(category).css('opacity', '1.0').css('box-shadow', '0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)').css('z-index', '2');
     },
     deemphasize() {
       // revert emphasis and deemphasis
-      $('.category-link').css('opacity', '');
-      $('.element').css('opacity', '');
-      $('.card-element-general').css('opacity', '');
+      $('.category-link').css('opacity', '').css('box-shadow','').css('z-index', '');
+      $('.element').css('opacity', '').css('box-shadow','').css('z-index', '');
+      $('.card-element-general').css('opacity', '').css('box-shadow','').css('z-index', '');
     }
   }
 }

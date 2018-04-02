@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "atomic-bohr-model": "^1.0.91",
+    "v-tooltip": "^2.0.0-rc.31",
     "vue": "^2.5.13",
     "vue-gh-pages": "^1.10.2",
     "vue-resource": "^1.4.0",

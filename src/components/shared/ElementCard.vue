@@ -4,7 +4,7 @@
       <div class="card-element-general">
         <h2 class="card-element-name"></h2>
         <h5 class="card-element-category"></h5>
-     </div>
+      </div>
       <div class="card-element-properties">
         <ul>
           <li>
@@ -36,7 +36,7 @@
       <div class="card-element-summary">
       <p id="summary"></p>
       </div>
-      <AtomicModel/>
+       <AtomicModel/>
     </div>
   </div>  
 </template>

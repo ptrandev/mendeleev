@@ -5,27 +5,30 @@
         <div class="header">
           <h1>Periodic Table of the Elements</h1>
         </div>
+        <TutorialCard/>
         <ElementCard/>
-        <div class="element"
+        <div v-for="element in elements" class="element shadow-hoverable tooltip-target"
         :class="`${element.category.replace(/probably|predicted to be/g, '').replace(/\s+/g, '-').replace(/,-/g, ' ')}`"
         :id="element.name.toLowerCase()"
-        v-bind:style="`grid-column-start: ${element.xpos + 1};
-        grid-row-start: ${element.ypos + 1}`"
+        v-bind:style="`grid-column-start: ${element.xpos + 1}; grid-row-start: ${element.ypos + 1}`"
         v-on:mouseover="displayInfo(element.name, element.category,
         element.phase, element.boil, element.melt, element.number,
         element.atomic_mass.toFixed(3), element.shells.join(' '), element.ypos,
-        element.xpos, element.summary)"
-        v-for="element in elements">
+        element.xpos, element.summary)">
           <div class="element-container">
             <div class="atomic-info">
               <span class="atomic-number">{{element.number}}</span>
               <span class="atomic-mass">{{element.atomic_mass | currency('', 3)}}</span>
             </div>
-            <div class="element-info">
+            <div class="element-symbol-container">
               <h3 class="element-symbol" :class="element.phase.toLowerCase()">{{element.symbol}}</h3>
+            </div>
+            <div class="element-name-container">
               <span class="element-name">{{element.name}}</span>
             </div>
-            <span class="electron-configuration">{{element.shells.join(' ')}}</span>
+            <div class="electron-configuration-container">
+              <span class="electron-configuration">{{element.shells.join(' ')}}</span>
+            </div>
           </div>
         </div>
         <div class="period-label" :style="`grid-column-start: 1; grid-row-start: 2;`">
@@ -103,8 +106,8 @@
         <div class="group-label" :style="`grid-column-start: 19; grid-row-start: 1; `">
           <span id="group-18">18</span>
         </div>
-        <div class="element lanthanide placeholder" :style="`grid-column-start: 4; grid-row-start: 7`"></div>
-        <div class="element actinide placeholder" :style="`grid-column-start: 4; grid-row-start: 8`"></div>
+        <div class="element shadow lanthanide placeholder" :style="`grid-column-start: 4; grid-row-start: 7`"></div>
+        <div class="element shadow actinide placeholder" :style="`grid-column-start: 4; grid-row-start: 8`"></div>
       </div>
     </div>
   </div>
@@ -112,6 +115,7 @@
 
 <script>
 import elements from '../assets/json/elements.json'
+import TutorialCard from './shared/TutorialCard'
 import ElementCard from './shared/ElementCard'
 
 export default {
@@ -120,28 +124,28 @@ export default {
     return {
       elements,
       atomicConfig: {
-        containerId: "#atomic-model",
-        numElectrons: 1,
-        idNumber: 1,
+        containerId: '#atomic-model',
+        numElectrons: 118,
+        idNumber: 118,
         nucleusColor: '#1B2126',
-        electronRadius: 3,
+        nucleusRadius: 22,
         electronColor: '#90CAF9',
-        orbitalSpacing: 9,
-        orbitalWidth: 1,
-        orbitalColor: '#1B2126'
+        orbitalColor: '#1B2126',
+        orbitalWidth: 1
       },
       atomGenerated: false,
       myAtom: null
     }
   },
   components: {
+    TutorialCard,
     ElementCard
   },
   methods: {
     displayInfo(elementName, elementCategory, elementPhase, elementBoil,
     elementMelt, elementNumber, elementMass, elementElectronConfiguration,
     elementPeriod, elementGroup, elementSummary) {
-      
+
       // displays element card on first hover
       if ($('.card-element-wrapper').css('display') != 'block') {
         $('.card-element-wrapper').css("display", "block");
@@ -176,11 +180,14 @@ export default {
       $('#period-group').html(elementPeriod + " / " + elementGroup);
       $('#summary').html(elementSummary);
 
-      // create the atom element if it hasn't been creeated yet
+      // create the atom element if it hasn't been created yet
       if (this.atomGenerated == false) {
+        // generate new atom and set number of electrons for atomic model
         this.myAtom = new Atom(this.atomicConfig);
+        this.myAtom.setNumElectrons(elementNumber);
+
+        // atom now generated, prevent if statement from running agian
         this.atomGenerated = true;
-        return this.myAtom;
       }
 
       // set number of electrons for atomic model

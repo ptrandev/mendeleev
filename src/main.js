@@ -1,12 +1,16 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
-import App from './App'
 import VueRouter from 'vue-router'
 import VueResource from 'vue-resource'
-import SortingMenu from './components/SortingMenu'
-import PeriodicTable from './components/PeriodicTable'
 import Vue2Filters from 'vue2-filters'
+import VTooltip from 'v-tooltip'
+
+import App from './App'
+import SortingMenu from './components/shared/SortingMenu'
+import Footer from './components/shared/Footer'
+import PeriodicTable from './components/PeriodicTable'
+import ElementProfile from './components/ElementProfile'
 
 window.$ = window.jQuery = require('jquery');
 
@@ -17,16 +21,24 @@ require('./../node_modules/atomic-bohr-model/dist/atomicBohrModel.min.js');
 Vue.use(VueResource)
 Vue.use(VueRouter)
 Vue.use(Vue2Filters)
+Vue.use(VTooltip)
 
 const router = new VueRouter({
   mode: 'history',
-  base: __dirname,
+  base: '/mendeleev',
   routes: [
     {
-      path:'/mendeleev',
+      path:'/',
       components: {
+        nav: SortingMenu,
         default: PeriodicTable,
-        menu: SortingMenu
+        footer: Footer
+      }
+    },
+    {
+      path:'/element/:element_name',
+      components: {
+        default: ElementProfile
       }
     }
   ]
@@ -37,9 +49,6 @@ Vue.config.productionTip = false
 /* eslint-disable no-new */
 new Vue({
   router,
-  template: `
-    <div id="app">
-      <router-view></router-view>
-      <router-view name="menu"></router-view>
-    </div>`,
+  template: `<App/>`,
+  components: { App }
 }).$mount('#app');

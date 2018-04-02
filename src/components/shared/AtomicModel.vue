@@ -5,10 +5,6 @@
 
 <script>
 export default {
-  name: 'AtomicModel',
-  data: function() {
-    return {
-    }
-  }
+  name: 'AtomicModel'
 }
 </script>

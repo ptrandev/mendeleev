@@ -1,19 +1,13 @@
 <template>
   <div id="app">
-    <SortingMenu/>
-    <PeriodicTable/>
+    <router-view name="nav"/>
+    <router-view/>
+    <router-view name="footer"/>
   </div>
 </template>
 
 <script>
-import PeriodicTable from './components/PeriodicTable'
-import SortingMenu from './components/SortingMenu'
-
 export default {
-  name: 'app',
-  components: {
-    PeriodicTable,
-    SortingMenu
-  }
+  name: 'app'
 }
 </script>

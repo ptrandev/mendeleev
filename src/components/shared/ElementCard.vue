@@ -51,3 +51,108 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.card-element-wrapper {
+  display: none;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  color: var(--color-white);
+  text-align: left;
+  grid-column: 4 / 14;
+  grid-row: 3 / 5;
+  z-index: 1;
+}
+
+.card-element-container {
+  display: grid;
+  grid-template-columns: 5.4vw 5.4vw 5.4vw 5.4vw 5.4vw 5.4vw 5.4vw 5.4vw 5.4vw 5.4vw;
+  grid-template-rows: 6.2vw 6.2vw;
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  background-color: var(--color-gray-2);
+  border-style: solid;
+  border-color: var(--color-gray);
+  border-width: 1px;
+}
+
+.card-element-general {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  grid-column: 1 / 5;
+  grid-row: 1 / 1;
+  color: var(--color-gray);
+  border-right: 2px solid var(--color-gray);
+  border-bottom: 2px solid var(--color-gray);
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  margin: 0px 1px 0px 1px;
+  opacity: 0.85;
+  transition: opacity 0.3s ease;
+}
+
+.card-element-name {
+  text-transform: capitalize;
+}
+
+.card-element-properties {
+  display: flex;
+  align-items: center;
+  grid-column: 5 / 9;
+  grid-row: 1 / 1;
+  padding: 2px 2px 0px 2px;
+}
+
+.card-element-properties ul {
+  list-style: none;
+}
+
+.card-element-property {
+  width: 100%;
+}
+
+.card-element-property-label {
+  font-weight: 700;
+}
+
+#atomic-model {
+  height: 100%;
+  width: 100%;
+  grid-column: 9 / 11;
+  grid-row: 1 / 3;
+  margin: auto;
+}
+
+.bohr-atomic-symbol {
+  font-family: 'Roboto Condensed';
+}
+
+.card-element-summary {
+  grid-column: 1 / 9;
+  grid-row: 2 / 2;
+  padding: 2px 2px 0px 2px;
+}
+
+@media(max-width: 1023px) {
+  .card-element-wrapper {
+    height: auto;
+    margin: 5px 0 2px 0;
+    padding: 0 2px 0;
+  }
+
+  .card-element-container {
+    display: block;
+    max-width: 768px;
+    padding: 5px 5px 0 5px;
+  }
+
+  .card-element-general {
+    border: 0;
+    margin: 0;
+  }
+}
+</style>

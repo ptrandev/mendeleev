@@ -11,3 +11,10 @@ export default {
   name: 'app'
 }
 </script>
+
+<style scoped>
+#app {
+  display: flex;
+  flex-direction: column;
+}
+</style>

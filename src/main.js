@@ -14,6 +14,8 @@ import ElementProfile from './components/ElementProfile'
 
 window.$ = window.jQuery = require('jquery');
 
+require('./assets/css/grids.css');
+require('./assets/css/grids-responsive.css');
 require('./assets/css/luxbar.css');
 require('./assets/css/periodic-table.css');
 require('./../node_modules/atomic-bohr-model/dist/atomicBohrModel.min.js');
@@ -36,9 +38,10 @@ const router = new VueRouter({
       }
     },
     {
-      path:'/element/:element_name',
+      path:'/element/:id',
       components: {
-        default: ElementProfile
+        default: ElementProfile,
+        footer: Footer
       }
     }
   ]

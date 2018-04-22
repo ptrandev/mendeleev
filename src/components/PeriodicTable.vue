@@ -13,7 +13,7 @@
         v-bind:style="`grid-column-start: ${element.xpos + 1}; grid-row-start: ${element.ypos + 1}`"
         v-on:mouseenter="displayInfo(element.name, element.category,
         element.phase, element.boil, element.melt, element.number,
-        element.atomic_mass.toFixed(3), element.shells.join(' '), element.ypos,
+        element.atomic_mass.toFixed(3), element.ypos,
         element.xpos, element.summary)"
         v-on:mouseleave="hideInfo()">
         <router-link :to="{path: '/element/' + element.number}">
@@ -117,77 +117,103 @@
 </template>
 
 <script>
-import elements from '../assets/json/elements.json'
-import TutorialCard from './shared/TutorialCard'
-import ElementCard from './shared/ElementCard'
+import pt from "periodic-table";
+import elements from "../assets/json/elements.json";
+import TutorialCard from "./shared/TutorialCard";
+import ElementCard from "./shared/ElementCard";
 
 export default {
-  name: 'PeriodicTable',
+  name: "PeriodicTable",
   data: function() {
     return {
       elements,
       atomicConfig: {
-        containerId: '#atomic-model',
+        containerId: "#atomic-model",
         numElectrons: 118,
         idNumber: 118,
-        nucleusColor: '#1B2126',
-        electronColor: '#90CAF9',
-        orbitalColor: '#1B2126',
+        nucleusColor: "#1B2126",
+        electronColor: "#90CAF9",
+        orbitalColor: "#1B2126",
         animationTime: 1500
       },
       orbitalRotationConfig: {
         pattern: {
           alternating: false,
           clockwise: true,
-          preset: 'random',
+          preset: "random"
         }
       },
       atomGenerated: false,
       myAtom: null
-      }
+    };
   },
   components: {
     TutorialCard,
     ElementCard
   },
   methods: {
-    displayInfo(elementName, elementCategory, elementPhase, elementBoil,
-    elementMelt, elementNumber, elementMass, elementElectronConfiguration,
-    elementPeriod, elementGroup, elementSummary) {
-
+    displayInfo(
+      elementName,
+      elementCategory,
+      elementPhase,
+      elementBoil,
+      elementMelt,
+      elementNumber,
+      elementMass,
+      elementPeriod,
+      elementGroup,
+      elementSummary
+    ) {
       // displays element card on hover
-      if ($('.card-element-wrapper').css('display') != 'block') {
-        $('.card-element-wrapper').css("display", "block");
+      if ($(".card-element-wrapper").css("display") != "block") {
+        $(".card-element-wrapper").css("display", "block");
       }
 
       // adds element category class, inserts name of element, inserts element category
-      $('.card-element-general').attr('class', 'card-element-general').addClass(elementCategory.replace(/probably|predicted to be/g, '').replace(/\s+/g, '-').replace(/,-/g, ' '));
-      $('.card-element-name').html(elementName);
-      $('.card-element-category').html(elementCategory);
+      $(".card-element-general")
+        .attr("class", "card-element-general")
+        .addClass(
+          elementCategory
+            .replace(/probably|predicted to be/g, "")
+            .replace(/\s+/g, "-")
+            .replace(/,-/g, " ")
+        );
+      $(".card-element-name").html(elementName);
+      $(".card-element-category").html(elementCategory);
 
       // generate boiling point
       if (elementBoil === null) {
-        elementBoil = 'N/A';
+        elementBoil = "N/A";
       } else {
-        elementBoil = (elementBoil) + '&#176;K / ' + (elementBoil - 273.15).toFixed(3) + '&#176;C';
-      };
+        elementBoil =
+          elementBoil +
+          "&#176;K / " +
+          (elementBoil - 273.15).toFixed(3) +
+          "&#176;C";
+      }
 
       // generate melting point
       if (elementMelt === null) {
-        elementMelt = 'N/A';
+        elementMelt = "N/A";
       } else {
-        elementMelt = (elementMelt) + '&#176;K / ' + (elementMelt - 273.15).toFixed(3) + '&#176;C';
-      };
+        elementMelt =
+          elementMelt +
+          "&#176;K / " +
+          (elementMelt - 273.15).toFixed(3) +
+          "&#176;C";
+      }
 
       // displays element phase, boiling point, melting point, atomic number,
       // atomic mass and summary
-      $('#phase').html(elementPhase);
-      $('#boiling-point').html(elementBoil);
-      $('#melting-point').html(elementMelt);
-      $('#number-mass').html(elementNumber + " / " + elementMass);
-      $('#electron-configuration').html(elementElectronConfiguration);
-      $('#period-group').html(elementPeriod + " / " + elementGroup);
-      $('#summary').html(elementSummary);
+      $("#phase").html(elementPhase);
+      $("#boiling-point").html(elementBoil);
+      $("#melting-point").html(elementMelt);
+      $("#number-mass").html(elementNumber + " / " + elementMass);
+      $("#electron-configuration").html(
+        pt.numbers[elementNumber].electronicConfiguration
+      );
+      $("#period-group").html(elementPeriod + " / " + elementGroup);
+      $("#summary").html(elementSummary);
 
       // create the atom element if it hasn't been created yet
       if (this.atomGenerated == false) {
@@ -206,16 +232,15 @@ export default {
     },
     hideInfo() {
       // hides card on mouse leave
-      if ($('.card-element-wrapper').css('display') === 'block') {
-        $('.card-element-wrapper').css("display", "");
+      if ($(".card-element-wrapper").css("display") === "block") {
+        $(".card-element-wrapper").css("display", "");
       }
     }
   }
-}
+};
 </script>
 
 <style scoped>
-
 /* Periodic Table */
 
 .periodic-table {
@@ -253,7 +278,7 @@ export default {
   width: 100%;
   border: 1px solid var(--color-gray);
   color: var(--color-gray);
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   opacity: 0.85;
   transition: all 0.3s ease;
   z-index: 0;
@@ -261,7 +286,7 @@ export default {
 
 .element:hover,
 .element:focus {
-  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
   opacity: 1;
   cursor: pointer;
   z-index: 2;
@@ -315,7 +340,6 @@ h2.liquid {
   -webkit-text-stroke: 2px var(--color-gray);
   color: var(--color-white);
 }
-
 
 .element-symbol,
 .element-name {

@@ -5,6 +5,6 @@
 
 <script>
 export default {
-  name: 'AtomicModel'
-}
+  name: "AtomicModel"
+};
 </script>

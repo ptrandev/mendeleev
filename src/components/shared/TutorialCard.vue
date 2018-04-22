@@ -45,8 +45,8 @@
 
 <script>
 export default {
-  name: 'Tutorial'
-}
+  name: "Tutorial"
+};
 </script>
 
 <style scoped>
@@ -80,7 +80,7 @@ export default {
   grid-column: 1 / 7;
   grid-row: 1/ 3;
   margin-left: 1vw;
-  background-color: var(--color-gray-2); 
+  background-color: var(--color-gray-2);
   height: calc(100% - 3.6vw);
 }
 
@@ -136,11 +136,11 @@ export default {
 }
 
 .card-tutorial-element-key span:after {
-  content: '';
+  content: "";
   display: inline-block;
   height: 0.75vw;
   width: 0.75vw;
-  background-image: url('../../assets/img/iconmonstr-arrow-37.svg');
+  background-image: url("../../assets/img/iconmonstr-arrow-37.svg");
   background-size: contain;
   background-repeat: no-repeat;
   margin-left: 0.25vw;

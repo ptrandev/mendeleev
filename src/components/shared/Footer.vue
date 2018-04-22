@@ -23,8 +23,8 @@
 
 <script>
 export default {
-  name: 'Footer'
-}
+  name: "Footer"
+};
 </script>
 
 <style scoped>
@@ -53,7 +53,7 @@ export default {
   padding-right: 0;
 }
 
-@media(max-width: 1023px) {
+@media (max-width: 1023px) {
   .footer-wrapper {
     margin: 4px;
   }

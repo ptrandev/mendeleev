@@ -1,61 +1,175 @@
 <template>
-  <header id="luxbar" class="luxbar-fixed">
-    <input type="checkbox" class="luxbar-checkbox" id="luxbar-checkbox"/>
-    <div class="luxbar-menu luxbar-menu-right luxbar-menu-dark">
-      <ul class="luxbar-navigation">
-        <li class="luxbar-header">
-          <a href="#" class="luxbar-brand">Mendeleev</a>
-          <label class="luxbar-hamburger luxbar-hamburger-doublespin" 
-          id="luxbar-hamburger" for="luxbar-checkbox"><span></span>
-          </label>
-        </li>
-        <li v-for="category in categories" :class="category"
-        class="luxbar-item category-link" v-on:mouseover="emphasize(category)"
-        v-on:mouseout="deemphasize">
-          <a href="#">{{category.replace(/-/g, ' ').replace(/gas/g, 'gase') + 's'}}</a>
-       </li>
-      </ul>
-    </div>
-  </header>
+  <div class="SortingMenu">
+    <header id="luxbar" class="luxbar-fixed">
+      <input type="checkbox" class="luxbar-checkbox" id="luxbar-checkbox"/>
+      <div class="luxbar-menu luxbar-menu-right luxbar-menu-dark">
+        <ul class="luxbar-navigation">
+          <li class="luxbar-header">
+            <router-link :to="'/'"><span class="luxbar-brand">Mendeleev</span></router-link>
+            <label class="luxbar-hamburger luxbar-hamburger-doublespin" 
+            id="luxbar-hamburger" for="luxbar-checkbox"><span></span>
+            </label>
+          </li>
+          <li v-for="category in categories" :class="category"
+          class="luxbar-item category-link" v-on:mouseover="emphasize(category)"
+          v-on:mouseout="deemphasize">
+            <a href="#">{{category.replace(/-/g, ' ').replace(/gas/g, 'gase') + 's'}}</a>
+         </li>
+        </ul>
+      </div>
+    </header>
+  </div>
 </template>
 
 <script>
 export default {
-  name: 'SortingMenu',
+  name: "SortingMenu",
   data: function() {
     return {
       categories: [
-        'polyatomic-nonmetal',
-        'diatomic-nonmetal',
-        'alkali-metal',
-        'alkaline-earth-metal',
-        'transition-metal',
-        'post-transition-metal',
-        'metalloid',
-        'noble-gas',
-        'lanthanide',
-        'actinide'
+        "polyatomic-nonmetal",
+        "diatomic-nonmetal",
+        "alkali-metal",
+        "alkaline-earth-metal",
+        "transition-metal",
+        "post-transition-metal",
+        "metalloid",
+        "noble-gas",
+        "lanthanide",
+        "actinide"
       ]
-    }
+    };
   },
   methods: {
     emphasize(category) {
       // convert category variable to class
-      category = '.' + category;
+      category = "." + category;
 
       // deemphasize .element and .category-link elements
-      $('.element').css('opacity', '0.6');
-      $('.category-link').css('opacity', '0.6');
+      $(".element").css("opacity", "0.6");
+      $(".category-link").css("opacity", "0.6");
 
       // emphasize elements of the selected category
-      $(category).css('opacity', '1.0').css('box-shadow', '0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)').css('z-index', '2');
+      $(category)
+        .css("opacity", "1.0")
+        .css(
+          "box-shadow",
+          "0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)"
+        )
+        .css("z-index", "2");
     },
     deemphasize() {
       // revert emphasis and deemphasis
-      $('.category-link').css('opacity', '').css('box-shadow','').css('z-index', '');
-      $('.element').css('opacity', '').css('box-shadow','').css('z-index', '');
-      $('.card-element-general').css('opacity', '').css('box-shadow','').css('z-index', '');
+      $(".category-link")
+        .css("opacity", "")
+        .css("box-shadow", "")
+        .css("z-index", "");
+      $(".element")
+        .css("opacity", "")
+        .css("box-shadow", "")
+        .css("z-index", "");
+      $(".card-element-general")
+        .css("opacity", "")
+        .css("box-shadow", "")
+        .css("z-index", "");
     }
   }
-}
+};
 </script>
+
+<style scoped>
+.luxbar-checkbox:not(:checked) ~ .luxbar-menu {
+  min-height: 2.5vw;
+  height: 2.5vw;
+}
+
+.luxbar-menu-dark {
+  background-color: var(--color-black);
+}
+
+.luxbar-header {
+  height: 2.5vw;
+}
+
+.luxbar-brand {
+  font-weight: 700;
+}
+
+.luxbar-item {
+  display: flex;
+  align-items: center;
+  height: 2.5vw;
+  color: #000;
+  text-align: center;
+}
+
+.luxbar-item a {
+  padding: 0px 10px;
+  color: var(--color-black);
+}
+
+.luxbar-item a:focus,
+.luxbar-item a:hover {
+  color: var(--color-black);
+}
+
+@media (max-width: 1023px) {
+  .luxbar-checkbox:not(:checked) ~ .luxbar-menu {
+    min-height: 54px;
+    height: 54px;
+  }
+
+  .luxbar-header {
+    height: 54px;
+  }
+
+  .luxbar-item {
+    height: 54px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .luxbar-navigation {
+    flex-flow: row;
+    justify-content: flex-end;
+  }
+
+  .luxbar-hamburger {
+    display: none;
+  }
+
+  .luxbar-checkbox:not(:checked) ~ .luxbar-menu {
+    overflow: visible;
+  }
+  .luxbar-checkbox:checked ~ .luxbar-menu {
+    height: 40px;
+  }
+
+  .luxbar-menu .luxbar-item {
+    border-top: 0;
+  }
+
+  .luxbar-menu-right .luxbar-header {
+    margin-right: auto;
+  }
+
+  .dropdown {
+    height: 40px;
+  }
+  .dropdown:hover > ul {
+    position: absolute;
+    left: 0;
+    top: 40px;
+    padding: 0;
+  }
+  .dropdown > ul {
+    display: none;
+  }
+  .dropdown > ul .luxbar-item {
+    padding: 5px 10px;
+  }
+  .dropdown > ul .luxbar-item a {
+    white-space: nowrap;
+  }
+}
+</style>

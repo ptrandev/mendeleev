@@ -42,14 +42,14 @@
 </template>
 
 <script>
-import AtomicModel from './AtomicModel.vue'
+import AtomicModel from "./AtomicModel.vue";
 
 export default {
-  name: 'ElementCard',
+  name: "ElementCard",
   components: {
     AtomicModel
   }
-}
+};
 </script>
 
 <style scoped>
@@ -128,7 +128,7 @@ export default {
 }
 
 .bohr-atomic-symbol {
-  font-family: 'Roboto Condensed';
+  font-family: "Roboto Condensed";
 }
 
 .card-element-summary {
@@ -137,7 +137,7 @@ export default {
   padding: 2px 2px 0px 2px;
 }
 
-@media(max-width: 1023px) {
+@media (max-width: 1023px) {
   .card-element-wrapper {
     height: auto;
     margin: 5px 0 2px 0;

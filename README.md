@@ -4,7 +4,7 @@
 
 ## Build Setup
 
-``` bash
+```bash
 # install dependencies
 npm install
 
@@ -22,5 +22,6 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 
 ## Technologies Used
 
-1. [Periodic-Table-JSON](https://github.com/Bowserinator/Periodic-Table-JSON)
-2. [atomic-bohr-model](https://github.com/ACollectionOfAtoms/atomic-bohr-model)
+1.  [Periodic-Table-JSON](https://github.com/Bowserinator/Periodic-Table-JSON)
+2.  [atomic-bohr-model](https://github.com/ACollectionOfAtoms/atomic-bohr-model)
+3.  [periodic-table](https://github.com/andrejewski/periodic-table)

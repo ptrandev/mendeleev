@@ -113,8 +113,7 @@ export default {
         idNumber: 118,
         nucleusColor: "#1B2126",
         electronColor: "#90CAF9",
-        orbitalColor: "#1B2126",
-        animationTime: 1500
+        orbitalColor: "#1B2126"
       },
       orbitalRotationConfig: {
         pattern: {
@@ -393,6 +392,7 @@ dd:last-child {
 .element-physical-properties {
   margin-right: 5px;
   height: 100%;
+  margin-bottom: 10px;
 }
 
 .element-atomic-properties {

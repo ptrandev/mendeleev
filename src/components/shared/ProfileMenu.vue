@@ -10,11 +10,11 @@
             id="luxbar-hamburger" for="luxbar-checkbox"><span></span>
             </label>
           </li>
-          <li class="luxbar-item">
+          <li class="luxbar-item previous-element">
             <router-link class="previous-element-link" :to="{path: '/element/' + previousElement}">Previous Element
             </router-link>
           </li>
-          <li class="luxbar-item">
+          <li class="luxbar-item next-element">
             <router-link class="next-element-link" :to="{path: '/element/' + nextElement}">Next Element
             </router-link>
           </li>
@@ -28,13 +28,39 @@
 export default {
   name: "ProfileMenu",
   computed: {
+    currentElement: function() {
+      return parseInt(this.$route.params.id);
+    },
     nextElement: function() {
-      let currentElement = parseInt(this.$route.params.id);
-      return currentElement + 1;
+      return this.currentElement + 1;
     },
     previousElement: function() {
-      return this.$route.params.id - 1;
+      return this.currentElement - 1;
     }
+  },
+  methods: {
+    hidePreviousElement: function() {
+      if (this.currentElement === 1) {
+        $(".previous-element-link").css("display", "none");
+      } else {
+        $(".previous-element-link").css("display", "");
+      }
+    },
+    hideNextElement: function() {
+      if (this.currentElement === 118) {
+        $(".next-element-link").css("display", "none");
+      } else {
+        $(".next-element-link").css("display", "");
+      }
+    }
+  },
+  mounted: function() {
+    this.hidePreviousElement();
+    this.hideNextElement();
+  },
+  updated: function() {
+    this.hidePreviousElement();
+    this.hideNextElement();
   }
 };
 </script>
@@ -137,7 +163,7 @@ export default {
     justify-content: center;
   }
 
-  .luxbar-item:nth-child(3) {
+  .next-element {
     order: 2;
     justify-content: flex-end;
   }

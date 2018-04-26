@@ -113,8 +113,19 @@ export default {
   font-size: 1.25vw;
 }
 
-.card-tutorial-element .atomic-info {
+.atomic-info {
+  display: flex;
+  justify-content: space-between;
   height: 1.25vw;
+  width: 100%;
+}
+
+.atomic-number {
+  margin-left: 0.15vw;
+}
+
+.atomic-mass {
+  margin-right: 0.15vw;
 }
 
 .card-tutorial-element .electron-configuration-container span {

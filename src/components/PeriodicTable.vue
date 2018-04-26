@@ -331,21 +331,18 @@ export default {
 }
 
 .atomic-info {
-  display: block;
-  text-align: left;
+  display: flex;
+  justify-content: space-between;
   width: 100%;
   height: 1vw;
 }
 
 .atomic-number {
-  display: inline-block;
-  margin: 0px 0px 0px 2px;
-  vertical-align: top;
+  margin-left: 0.1vw;
 }
 
 .atomic-mass {
-  float: right;
-  margin: 0px 2px 0px 0px;
+  margin-right: 0.1vw;
 }
 
 h1.gas,
@@ -434,6 +431,15 @@ h2.liquid {
 
   .atomic-info {
     height: auto;
+    margin-top: 2px;
+  }
+
+  .atomic-number {
+    margin-left: 2px;
+  }
+
+  .atomic-mass {
+    margin-right: 2px;
   }
 
   .electron-configuration {

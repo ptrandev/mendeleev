@@ -10,12 +10,12 @@
         <div v-for="element in elements" class="element shadow-hoverable"
         :class="`${element.category.replace(/probably|predicted to be/g, '').replace(/\s+/g, '-').replace(/,-/g, ' ')}`"
         :id="element.name.toLowerCase()"
-        v-bind:style="`grid-column-start: ${element.xpos + 1}; grid-row-start: ${element.ypos + 1}`"
-        v-on:mouseenter="displayInfo(element.name, element.category,
+        :style="`grid-column-start: ${element.xpos + 1}; grid-row-start: ${element.ypos + 1}`"
+        @mouseenter="displayInfo(element.name, element.category,
         element.phase, element.boil, element.melt, element.number,
         element.atomic_mass.toFixed(3), element.ypos,
         element.xpos, element.summary)"
-        v-on:mouseleave="hideInfo()">
+        @mouseleave="hideInfo()">
         <router-link :to="{path: '/element/' + element.number}">
           <div class="element-container">
             <div class="atomic-info">
@@ -144,7 +144,8 @@ export default {
         }
       },
       atomGenerated: false,
-      myAtom: null
+      myAtom: null,
+      windowWidth: null
     };
   },
   components: {
@@ -164,78 +165,93 @@ export default {
       elementGroup,
       elementSummary
     ) {
-      // displays element card on hover
-      if ($(".card-element-wrapper").css("display") != "block") {
-        $(".card-element-wrapper").css("display", "block");
-      }
+      // only allows card to be displayed in full table mode
+      if (this.windowWidth > 1023) {
+        // displays element card on hover
+        if ($(".card-element-wrapper").css("display") != "block") {
+          $(".card-element-wrapper").css("display", "block");
+        }
 
-      // adds element category class, inserts name of element, inserts element category
-      $(".card-element-general")
-        .attr("class", "card-element-general")
-        .addClass(
-          elementCategory
-            .replace(/probably|predicted to be/g, "")
-            .replace(/\s+/g, "-")
-            .replace(/,-/g, " ")
+        // adds element category class, inserts name of element, inserts element category
+        $(".card-element-general")
+          .attr("class", "card-element-general")
+          .addClass(
+            elementCategory
+              .replace(/probably|predicted to be/g, "")
+              .replace(/\s+/g, "-")
+              .replace(/,-/g, " ")
+          );
+        $(".card-element-name").html(elementName);
+        $(".card-element-category").html(elementCategory);
+
+        // generate boiling point
+        if (elementBoil === null) {
+          elementBoil = "N/A";
+        } else {
+          elementBoil =
+            elementBoil +
+            "&#176;K / " +
+            (elementBoil - 273.15).toFixed(3) +
+            "&#176;C";
+        }
+
+        // generate melting point
+        if (elementMelt === null) {
+          elementMelt = "N/A";
+        } else {
+          elementMelt =
+            elementMelt +
+            "&#176;K / " +
+            (elementMelt - 273.15).toFixed(3) +
+            "&#176;C";
+        }
+
+        // displays element phase, boiling point, melting point, atomic number,
+        // atomic mass and summary
+        $("#phase").html(elementPhase);
+        $("#boiling-point").html(elementBoil);
+        $("#melting-point").html(elementMelt);
+        $("#number-mass").html(elementNumber + " / " + elementMass);
+        $("#electron-configuration").html(
+          pt.numbers[elementNumber].electronicConfiguration
         );
-      $(".card-element-name").html(elementName);
-      $(".card-element-category").html(elementCategory);
+        $("#period-group").html(elementPeriod + " / " + elementGroup);
+        $("#summary").html(elementSummary);
 
-      // generate boiling point
-      if (elementBoil === null) {
-        elementBoil = "N/A";
-      } else {
-        elementBoil =
-          elementBoil +
-          "&#176;K / " +
-          (elementBoil - 273.15).toFixed(3) +
-          "&#176;C";
-      }
+        // create the atom element if it hasn't been created yet
+        if (this.atomGenerated == false) {
+          // generate new atom, set number of electrons, apply orbital config
+          this.myAtom = new Atom(this.atomicConfig);
+          this.myAtom.setNumElectrons(elementNumber);
+          this.myAtom.rotateOrbitals(this.orbitalRotationConfig);
 
-      // generate melting point
-      if (elementMelt === null) {
-        elementMelt = "N/A";
-      } else {
-        elementMelt =
-          elementMelt +
-          "&#176;K / " +
-          (elementMelt - 273.15).toFixed(3) +
-          "&#176;C";
-      }
+          // atom now generated, prevent if statement from running agian
+          this.atomGenerated = true;
+        }
 
-      // displays element phase, boiling point, melting point, atomic number,
-      // atomic mass and summary
-      $("#phase").html(elementPhase);
-      $("#boiling-point").html(elementBoil);
-      $("#melting-point").html(elementMelt);
-      $("#number-mass").html(elementNumber + " / " + elementMass);
-      $("#electron-configuration").html(
-        pt.numbers[elementNumber].electronicConfiguration
-      );
-      $("#period-group").html(elementPeriod + " / " + elementGroup);
-      $("#summary").html(elementSummary);
-
-      // create the atom element if it hasn't been created yet
-      if (this.atomGenerated == false) {
-        // generate new atom, set number of electrons, apply orbital config
-        this.myAtom = new Atom(this.atomicConfig);
+        // set number of electrons for atomic model, apply orbital config
         this.myAtom.setNumElectrons(elementNumber);
         this.myAtom.rotateOrbitals(this.orbitalRotationConfig);
-
-        // atom now generated, prevent if statement from running agian
-        this.atomGenerated = true;
       }
-
-      // set number of electrons for atomic model, apply orbital config
-      this.myAtom.setNumElectrons(elementNumber);
-      this.myAtom.rotateOrbitals(this.orbitalRotationConfig);
     },
     hideInfo() {
       // hides card on mouse leave
       if ($(".card-element-wrapper").css("display") === "block") {
         $(".card-element-wrapper").css("display", "");
       }
+    },
+    getWindowWidth(event) {
+      this.windowWidth = document.documentElement.clientWidth;
     }
+  },
+  mounted: function() {
+    this.$nextTick(function() {
+      window.addEventListener("resize", this.getWindowWidth);
+      this.getWindowWidth();
+    });
+  },
+  beforeDestroy: function() {
+    window.removeEventListener("resize", this.getWindowWidth);
   }
 };
 </script>

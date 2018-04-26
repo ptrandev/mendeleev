@@ -4,7 +4,6 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import VueResource from "vue-resource";
 import Vue2Filters from "vue2-filters";
-import VTooltip from "v-tooltip";
 
 import App from "./App";
 import SortingMenu from "./components/shared/SortingMenu";
@@ -26,7 +25,6 @@ require("./../node_modules/atomic-bohr-model/dist/atomicBohrModel.min.js");
 Vue.use(VueResource);
 Vue.use(VueRouter);
 Vue.use(Vue2Filters);
-Vue.use(VTooltip);
 
 const router = new VueRouter({
   mode: "history",

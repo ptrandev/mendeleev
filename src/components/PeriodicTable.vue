@@ -213,7 +213,10 @@ export default {
         $("#melting-point").html(elementMelt);
         $("#number-mass").html(elementNumber + " / " + elementMass);
         $("#electron-configuration").html(
-          pt.numbers[elementNumber].electronicConfiguration
+          pt.numbers[elementNumber].electronicConfiguration.replace(
+            /(?<=s)[0-9]?[0-9]|(?<=p)[0-9]?[0-9]|(?<=d)[0-9]?[0-9]|(?<=f)[0-9]?[0-9]/g,
+            "<sup>$&</sup>"
+          )
         );
         $("#period-group").html(elementPeriod + " / " + elementGroup);
         $("#summary").html(elementSummary);

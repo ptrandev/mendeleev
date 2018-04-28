@@ -30,6 +30,6 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 
 1.  Open up an issue and describe a bug you would like to fix or a feauture you would like to add.
 2.  I'll review the issue and give you the thumbs up if I think it's a good idea.
-    3.. Install Prettier in your prefered editor for consistent code styling.
-3.  Fork and code. Once you're done, make a pull request.
-4.  The pull request will be reviewed and approved.
+3.  Install Prettier in your prefered editor for consistent code styling.
+4.  Fork and code. Once you're done, make a pull request.
+5.  The pull request will be reviewed and approved.

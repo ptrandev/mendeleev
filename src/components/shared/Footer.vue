@@ -14,7 +14,8 @@
           <p>Mendeleev is an MIT licensed, open-source project. The source code
             is available on <a target="_blank" rel="noopener" href="https://github.com/DonutDeflector/mendeleev">GitHub</a>.
             Additions to the project are welcome. Just remember to read the
-            contribution guide before getting started!</p>
+            <a target="_blank" rel="noopener" href="https://github.com/DonutDeflector/mendeleev#contribution-guide">contribution guide</a>
+            before getting started!</p>
         </div>
       </div>
     </div>

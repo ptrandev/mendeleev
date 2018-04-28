@@ -25,3 +25,11 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 1.  [Periodic-Table-JSON](https://github.com/Bowserinator/Periodic-Table-JSON)
 2.  [atomic-bohr-model](https://github.com/ACollectionOfAtoms/atomic-bohr-model)
 3.  [periodic-table](https://github.com/andrejewski/periodic-table)
+
+## Contribution Guide
+
+1.  Open up an issue and describe a bug you would like to fix or a feauture you would like to add.
+2.  I'll review the issue and give you the thumbs up if I think it's a good idea.
+    3.. Install Prettier in your prefered editor for consistent code styling.
+3.  Fork and code. Once you're done, make a pull request.
+4.  The pull request will be reviewed and approved.

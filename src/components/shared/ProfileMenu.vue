@@ -1,6 +1,6 @@
 <template>
   <div class="ProfileMenu">
-    <header id="luxbar" class="luxbar-static">
+    <header id="luxbar" class="luxbar-fixed">
       <input type="checkbox" class="luxbar-checkbox" id="luxbar-checkbox"/>
       <div class="luxbar-menu luxbar-menu-right luxbar-menu-dark">
         <ul class="luxbar-navigation">
@@ -66,7 +66,7 @@ export default {
 </script>
 
 <style scoped>
-.luxbar-static {
+.luxbar-fixed {
   max-width: 960px;
   left: 0;
   right: 0;

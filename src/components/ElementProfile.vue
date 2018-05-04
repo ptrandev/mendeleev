@@ -294,8 +294,8 @@ dl {
 }
 
 p {
-  margin-top: 1em;
-  margin-bottom: 1em;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 span {
@@ -309,10 +309,6 @@ dd {
 
 dd:last-child {
   margin-bottom: 0;
-}
-
-.card {
-  padding: 15px;
 }
 
 .title {
@@ -332,6 +328,7 @@ dd:last-child {
   text-align: center;
   margin-bottom: 10px;
   padding: 10px;
+  opacity: 0.85;
 }
 
 .atomic-model {

@@ -8,10 +8,12 @@ import Vue2Filters from "vue2-filters";
 import App from "./App";
 import SortingMenu from "./components/shared/SortingMenu";
 import ProfileMenu from "./components/shared/ProfileMenu";
+import CategoryMenu from "./components/shared/CategoryMenu";
 import FooterPeriodicTable from "./components/shared/FooterPeriodicTable";
 import FooterElementProfile from "./components/shared/FooterElementProfile";
 import PeriodicTable from "./components/PeriodicTable";
 import ElementProfile from "./components/ElementProfile";
+import CategoryProfile from "./components/CategoryProfile";
 
 import pt from "periodic-table";
 
@@ -44,6 +46,14 @@ const router = new VueRouter({
       components: {
         nav: ProfileMenu,
         default: ElementProfile,
+        footer: FooterElementProfile
+      }
+    },
+    {
+      path: "/category/:id",
+      components: {
+        nav: CategoryMenu,
+        default: CategoryProfile,
         footer: FooterElementProfile
       }
     }

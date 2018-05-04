@@ -1,5 +1,5 @@
 <template>
-  <div class="SortingMenu">
+  <div class="ProfileMenu">
     <header id="luxbar" class="luxbar-fixed">
       <input type="checkbox" class="luxbar-checkbox" id="luxbar-checkbox"/>
       <div class="luxbar-menu luxbar-menu-right luxbar-menu-dark">
@@ -11,8 +11,7 @@
             </label>
           </li>
           <li v-for="category in categories" :class="category"
-          class="luxbar-item category-link" v-on:mouseover="emphasize(category)"
-          v-on:mouseout="deemphasize">
+          class="luxbar-item category-link" @click="closeMenu()">
             <router-link :to="{path: '/category/' + category}">{{category.replace(/-/g, ' ').replace(/gas/g, 'gase') + 's'}}</router-link>
          </li>
         </ul>
@@ -23,7 +22,7 @@
 
 <script>
 export default {
-  name: "SortingMenu",
+  name: "ProfileMenu",
   data: function() {
     return {
       categories: [
@@ -41,37 +40,8 @@ export default {
     };
   },
   methods: {
-    emphasize(category) {
-      // convert category variable to class
-      category = "." + category;
-
-      // deemphasize .element and .category-link elements
-      $(".element").css("opacity", "0.6");
-      $(".category-link").css("opacity", "0.6");
-
-      // emphasize elements of the selected category
-      $(category)
-        .css("opacity", "1.0")
-        .css(
-          "box-shadow",
-          "0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)"
-        )
-        .css("z-index", "2");
-    },
-    deemphasize() {
-      // revert emphasis and deemphasis
-      $(".category-link")
-        .css("opacity", "")
-        .css("box-shadow", "")
-        .css("z-index", "");
-      $(".element")
-        .css("opacity", "")
-        .css("box-shadow", "")
-        .css("z-index", "");
-      $(".card-element-general")
-        .css("opacity", "")
-        .css("box-shadow", "")
-        .css("z-index", "");
+    closeMenu() {
+      document.getElementById("luxbar-checkbox").checked = false;
     }
   }
 };
@@ -79,8 +49,8 @@ export default {
 
 <style scoped>
 .luxbar-checkbox:not(:checked) ~ .luxbar-menu {
-  min-height: 2.5vw;
-  height: 2.5vw;
+  min-height: 54px;
+  height: 54px;
 }
 
 .luxbar-menu-dark {
@@ -88,35 +58,46 @@ export default {
 }
 
 .luxbar-header {
-  height: 2.5vw;
+  height: 54px;
 }
 
 .luxbar-brand {
+  font-size: 1.6rem;
   font-weight: 700;
 }
 
 .luxbar-item {
-  height: 2.5vw;
+  height: 54px;
 }
 
 .category-link {
   opacity: 0.9;
 }
 
+.luxbar-item {
+  opacity: 0.9;
+  z-index: 0;
+  transition: all 0.3s ease;
+}
+
+.luxbar-item:focus,
+.luxbar-item:hover {
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  opacity: 1;
+  z-index: 2;
+}
+
 .luxbar-item a {
   display: flex;
   align-items: center;
+  text-align: center;
   height: 100%;
-  padding: 0 0.5vw;
+  padding: 10px;
+  font-size: 16px;
   color: var(--color-black);
 }
 
-.luxbar-item a:focus,
-.luxbar-item a:hover {
-  color: var(--color-black);
-}
-
-@media (max-width: 1023px) {
+@media (max-width: 1239px) {
   .luxbar-checkbox:not(:checked) ~ .luxbar-menu {
     min-height: 54px;
     height: 54px;
@@ -135,7 +116,7 @@ export default {
   }
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 1240px) {
   .luxbar-navigation {
     flex-flow: row;
     justify-content: flex-end;

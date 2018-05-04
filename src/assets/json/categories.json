@@ -1,0 +1,52 @@
+[
+  {
+    "name": "polyatomic nonmetal",
+    "summary": "In chemistry, a nonmetal (or non-metal) is a chemical element that mostly lacks metallic attributes. Physically, nonmetals tend to have relatively low melting and boiling points, and densities, are mostly brittle if solid, and are usually poor conductors of heat and electricity; chemically, they tend to have relatively high ionization energy, electron affinity, and electronegativity values, and gain or share electrons when they react with other elements or compounds. Seventeen elements are generally classified as nonmetals; most are gases (hydrogen, helium, nitrogen, oxygen, fluorine, neon, chlorine, argon, krypton, xenon and radon); one is a liquid (bromine), and a few are solids (carbon, phosphorus, sulfur, selenium, and iodine). Polyatomic nonmetals have structures featuring three or two nearest neighbours.",
+    "source": "https://en.wikipedia.org/wiki/Nonmetal"
+  },
+  {
+    "name": "diatomic nonmetal",
+    "summary": "In chemistry, a nonmetal (or non-metal) is a chemical element that mostly lacks metallic attributes. Physically, nonmetals tend to have relatively low melting and boiling points, and densities, are mostly brittle if solid, and are usually poor conductors of heat and electricity; chemically, they tend to have relatively high ionization energy, electron affinity, and electronegativity values, and gain or share electrons when they react with other elements or compounds. Seventeen elements are generally classified as nonmetals; most are gases (hydrogen, helium, nitrogen, oxygen, fluorine, neon, chlorine, argon, krypton, xenon and radon); one is a liquid (bromine), and a few are solids (carbon, phosphorus, sulfur, selenium, and iodine). Diatomic nonmetals have one nearest neighbour.",
+    "source": "https://en.wikipedia.org/wiki/Nonmetal"
+  },
+  {
+    "name": "alkali metal",
+    "summary": "The alkali metals are a group (column) in the periodic table consisting of the chemical elements lithium (Li), sodium (Na), potassium (K), rubidium (Rb), caesium (Cs), and francium (Fr). This group lies in the s-block of the periodic table of elements as all alkali metals have their outermost electron in an s-orbital: this shared electron configuration results in their having very similar characteristic properties. Indeed, the alkali metals provide the best example of group trends in properties in the periodic table, with elements exhibiting well-characterised homologous behaviour.",
+    "source": "https://en.wikipedia.org/wiki/Alkali_metal"
+  },
+  {
+    "name": "alkaline earth metal",
+    "summary": "The alkaline earth metals are six chemical elements in group 2 of the periodic table. They are beryllium (Be), magnesium (Mg), calcium (Ca), strontium (Sr), barium (Ba), and radium (Ra). The elements have very similar properties: they are all shiny, silvery-white, somewhat reactive metals at standard temperature and pressure. Structurally, they have in common an outer s- electron shell which is full; that is, this orbital contains its full complement of two electrons, which these elements readily lose to form cations with charge +2, and an oxidation state of +2.",
+    "source": "https://en.wikipedia.org/wiki/Alkaline_earth_metal"
+  },
+  {
+    "name": "transition metal",
+    "summary": "In chemistry, the term transition metal (or transition element) has three possible meanings: The IUPAC definition defines a transition metal as \"an element whose atom has a partially filled d sub-shell, or which can give rise to cations with an incomplete d sub-shell\". Many scientists describe a \"transition metal\" as any element in the d-block of the periodic table, which includes groups 3 to 12 on the periodic table. In actual practice, the f-block lanthanide and actinide series are also considered transition metals and are called \"inner transition metals\". Cotton and Wilkinson expand the brief IUPAC definition (see above) by specifying which elements are included. As well as the elements of groups 4 to 11, they add scandium and yttrium in group 3 which have a partially filled d subshell in the metallic state. These last two elements are included even though they do not (so far) seem to possess the catalytic properties which are so characteristic of the transition metals in general. Lanthanum and actinium in Group 3 are however classified as lanthanides and actinides respectively.",
+    "source": "https://en.wikipedia.org/wiki/Transition_metal"
+  },
+  {
+    "name": "post-transition metal",
+    "summary": "Post-transition metals are a set of metallic elements in the periodic table located between the transition metals to their left, and the metalloids to their right. Depending on where these adjacent groups are judged to begin and end, there are at least five competing proposals for which elements to include: the three most common contain six, ten and thirteen elements, respectively (see image). All proposals include gallium, indium, tin, thallium, lead, and bismuth. Physically, post-transition metals are soft (or brittle), have poor mechanical strength, and have melting points lower than those of the transition metals. Being close to the metal-nonmetal border, their crystalline structures tend to show covalent or directional bonding effects, having generally greater complexity or fewer nearest neighbours than other metallic elements. Chemically, they are characterised—to varying degrees—by covalent bonding tendencies, acid-base amphoterism and the formation of anionic species such as aluminates, stannates, and bismuthates (in the case of aluminium, tin, and bismuth, respectively). They can also form Zintl phases (half-metallic compounds formed between highly electropositive metals and moderately electronegative metals or metalloids).",
+    "source": "https://en.wikipedia.org/wiki/Post-transition_metal"
+  },
+  {
+    "name": "metalloid",
+    "summary": "A metalloid is any chemical element which has properties in between those of metals and nonmetals, or that has a mixture of them. There is neither a standard definition of a metalloid nor complete agreement on the elements appropriately classified as such. Despite the lack of specificity, the term remains in use in the literature of chemistry. The six commonly recognised metalloids are boron, silicon, germanium, arsenic, antimony, and tellurium. Five elements are less frequently so classified: carbon, aluminium, selenium, polonium, and astatine. On a standard periodic table, all eleven are in a diagonal area in the p-block extending from boron at the upper left to astatine at lower right, along the dividing line between metals and nonmetals shown on some periodic tables. Typical metalloids have a metallic appearance, but they are brittle and only fair conductors of electricity. Chemically, they behave mostly as nonmetals. They can form alloys with metals. Most of their other physical and chemical properties are intermediate in nature. Metalloids are usually too brittle to have any structural uses. They and their compounds are used in alloys, biological agents, catalysts, flame retardants, glasses, optical storage and optoelectronics, pyrotechnics, semiconductors, and electronics.",
+    "source": "https://en.wikipedia.org/wiki/Metalloid"
+  },
+  {
+    "name": "noble gas",
+    "summary": "The noble gases (historically also the inert gases) make up a group of chemical elements with similar properties; under standard conditions, they are all odorless, colorless, monatomic gases with very low chemical reactivity. The six noble gases that occur naturally are helium (He), neon (Ne), argon (Ar), krypton (Kr), xenon (Xe), and the radioactive radon (Rn). Oganesson (Og) is variously predicted to be a noble gas as well or to break the trend due to relativistic effects; its chemistry has not yet been investigated.",
+    "source": "https://en.wikipedia.org/wiki/Noble_gas"
+  },
+  {
+    "name": "lanthanide",
+    "summary": "The lanthanide (/ˈlænθənaɪd/) or lanthanoid (/ˈlænθənɔɪd/) series of chemical elements comprises the fifteen metallic chemical elements with atomic numbers 57 through 71, from lanthanum through lutetium. These fifteen lanthanide elements, along with the chemically similar elements scandium and yttrium, are often collectively known as the rare earth elements.",
+    "source": "https://en.wikipedia.org/wiki/Lanthanide"
+  },
+  {
+    "name": "actinide",
+    "summary": "The actinide /ˈæktɪnaɪd/ or actinoid /ˈæktɪnɔɪd/ (IUPAC nomenclature) series encompasses the 15 metallic chemical elements with atomic numbers from 89 to 103, actinium through lawrencium. All actinides are radioactive and release energy upon radioactive decay; naturally occurring uranium and thorium, and synthetically produced plutonium are the most abundant actinides on Earth. These are used in nuclear reactors and nuclear weapons. Uranium and thorium also have diverse current or historical uses, and americium is used in the ionization chambers of most modern smoke detectors.",
+    "source": "https://en.wikipedia.org/wiki/Actinide"
+  }
+]

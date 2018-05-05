@@ -10,11 +10,11 @@
             id="luxbar-hamburger" for="luxbar-checkbox"><span></span>
             </label>
           </li>
-          <li class="luxbar-item previous-element">
+          <li class="luxbar-item previous-element" @click="closeMenu()">
             <router-link class="previous-element-link" :to="{path: '/element/' + previousElement}">Previous Element
             </router-link>
           </li>
-          <li class="luxbar-item next-element">
+          <li class="luxbar-item next-element" @click="closeMenu()">
             <router-link class="next-element-link" :to="{path: '/element/' + nextElement}">Next Element
             </router-link>
           </li>
@@ -52,6 +52,9 @@ export default {
       } else {
         $(".next-element-link").css("display", "");
       }
+    },
+    closeMenu: function() {
+      document.getElementById("luxbar-checkbox").checked = false;
     }
   },
   mounted: function() {

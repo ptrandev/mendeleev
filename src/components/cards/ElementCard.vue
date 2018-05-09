@@ -42,7 +42,7 @@
 </template>
 
 <script>
-import AtomicModel from "./AtomicModel.vue";
+import AtomicModel from "../shared/AtomicModel.vue";
 
 export default {
   name: "ElementCard",

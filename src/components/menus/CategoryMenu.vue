@@ -40,7 +40,7 @@ export default {
     };
   },
   methods: {
-    closeMenu() {
+    closeMenu: function() {
       document.getElementById("luxbar-checkbox").checked = false;
     }
   }

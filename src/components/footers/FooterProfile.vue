@@ -1,5 +1,5 @@
 <template>
-  <div class="FooterElementProfile">
+  <div class="FooterProfile">
   <Footer/>
   </div>
 </template>
@@ -8,7 +8,7 @@
 import Footer from "./Footer";
 
 export default {
-  name: "FooterElementProfile",
+  name: "FooterProfile",
   components: {
     Footer
   }

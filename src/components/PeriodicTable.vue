@@ -119,8 +119,8 @@
 <script>
 import pt from "periodic-table";
 import elements from "../assets/json/elements.json";
-import TutorialCard from "./shared/TutorialCard";
-import ElementCard from "./shared/ElementCard";
+import TutorialCard from "./cards/TutorialCard";
+import ElementCard from "./cards/ElementCard";
 
 export default {
   name: "PeriodicTable",

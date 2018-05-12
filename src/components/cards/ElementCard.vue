@@ -1,7 +1,7 @@
 <template>
   <div class="card-element-wrapper">
     <div class="card-element-container">
-      <div class="card-element-general">
+      <div id="card-element-general">
         <h2 class="card-element-name"></h2>
         <h5 class="card-element-category"></h5>
       </div>
@@ -78,7 +78,7 @@ export default {
   border-width: 1px;
 }
 
-.card-element-general {
+#card-element-general {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -150,7 +150,7 @@ export default {
     padding: 5px 5px 0 5px;
   }
 
-  .card-element-general {
+  #card-element-general {
     border: 0;
     margin: 0;
   }

@@ -41,16 +41,16 @@ export default {
   methods: {
     hidePreviousElement: function() {
       if (this.currentElement === 1) {
-        $(".previous-element-link").css("display", "none");
+        document.querySelector(".previous-element-link").style.display = "none";
       } else {
-        $(".previous-element-link").css("display", "");
+        document.querySelector(".previous-element-link").style.display = "";
       }
     },
     hideNextElement: function() {
       if (this.currentElement === 118) {
-        $(".next-element-link").css("display", "none");
+        document.querySelector(".next-element-link").style.display = "none";
       } else {
-        $(".next-element-link").css("display", "");
+        document.querySelector(".next-element-link").style.display = "";
       }
     },
     closeMenu: function() {

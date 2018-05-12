@@ -109,8 +109,8 @@ export default {
       elements,
       atomicConfig: {
         containerId: "#atomic-model",
-        numElectrons: 118,
-        idNumber: 118,
+        numElectrons: 1,
+        idNumber: 1,
         nucleusColor: "#1B2126",
         electronColor: "#90CAF9",
         orbitalColor: "#1B2126"

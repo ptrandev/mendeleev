@@ -12,7 +12,7 @@
           </li>
           <li v-for="category in categories" :class="category"
           class="luxbar-item category-link" v-on:mouseover="emphasize(category)"
-          v-on:mouseout="deemphasize">
+          v-on:mouseout="deemphasize(category)">
             <router-link :to="{path: '/category/' + category}">{{category.replace(/-/g, ' ').replace(/gas/g, 'gase') + 's'}}</router-link>
          </li>
         </ul>
@@ -45,33 +45,47 @@ export default {
       // convert category variable to class
       category = "." + category;
 
+      // find all element and category elements
+      let elements = document.querySelectorAll(".element");
+      let categories = document.querySelectorAll(".category-link");
+      let selectedCategory = document.querySelectorAll(category);
+
       // deemphasize .element and .category-link elements
-      $(".element").css("opacity", "0.6");
-      $(".category-link").css("opacity", "0.6");
+      elements.forEach(function(element) {
+        element.classList.add("deemphasized");
+      });
+
+      categories.forEach(function(category) {
+        category.classList.add("deemphasized");
+      });
 
       // emphasize elements of the selected category
-      $(category)
-        .css("opacity", "1.0")
-        .css(
-          "box-shadow",
-          "0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)"
-        )
-        .css("z-index", "2");
+      selectedCategory.forEach(function(category) {
+        category.classList.add("emphasized");
+      });
     },
-    deemphasize() {
+    deemphasize(category) {
+      // convert category variable to class
+      category = "." + category;
+
+      // find all element and category elements
+      let elements = document.querySelectorAll(".element");
+      let categories = document.querySelectorAll(".category-link");
+      let selectedCategory = document.querySelectorAll(category);
+
       // revert emphasis and deemphasis
-      $(".category-link")
-        .css("opacity", "")
-        .css("box-shadow", "")
-        .css("z-index", "");
-      $(".element")
-        .css("opacity", "")
-        .css("box-shadow", "")
-        .css("z-index", "");
-      $(".card-element-general")
-        .css("opacity", "")
-        .css("box-shadow", "")
-        .css("z-index", "");
+      elements.forEach(function(element) {
+        element.classList.remove("deemphasized");
+      });
+
+      categories.forEach(function(category) {
+        category.classList.remove("deemphasized");
+        category.classList.remove("emphasized");
+      });
+
+      selectedCategory.forEach(function(category) {
+        category.classList.remove("emphasized");
+      });
     }
   }
 };
@@ -101,6 +115,7 @@ export default {
 
 .category-link {
   opacity: 0.9;
+  transition: all 0.3s ease;
 }
 
 .luxbar-item a {

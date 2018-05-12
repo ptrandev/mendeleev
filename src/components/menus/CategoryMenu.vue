@@ -72,12 +72,12 @@ export default {
 
 .category-link {
   opacity: 0.9;
+  transition: all 0.3s ease;
 }
 
 .luxbar-item {
   opacity: 0.9;
   z-index: 0;
-  transition: all 0.3s ease;
 }
 
 .luxbar-item:focus,

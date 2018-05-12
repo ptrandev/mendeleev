@@ -569,6 +569,21 @@ button {
   padding: 3px 7px;
 }
 
+.deemphasized {
+  opacity: 0.6 !important;
+  z-index: 0 !important;
+}
+
+.emphasized {
+  opacity: 1 !important;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23) !important;
+  z-index: 2;
+}
+
+.reveal {
+  display: block !important;
+}
+
 .shadow {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }

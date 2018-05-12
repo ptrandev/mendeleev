@@ -17,8 +17,6 @@ import CategoryProfile from "./components/CategoryProfile";
 
 import pt from "periodic-table";
 
-window.$ = window.jQuery = require("jquery");
-
 require("./assets/css/grids.css");
 require("./assets/css/grids-responsive.css");
 require("./assets/css/luxbar.css");

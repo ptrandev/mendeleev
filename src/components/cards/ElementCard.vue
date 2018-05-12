@@ -1,5 +1,5 @@
 <template>
-  <div class="card-element-wrapper">
+  <div class="card-element-wrapper hide">
     <div class="card-element-container">
       <div id="card-element-general">
         <h2 class="card-element-name"></h2>
@@ -54,7 +54,6 @@ export default {
 
 <style scoped>
 .card-element-wrapper {
-  display: none;
   width: 100%;
   height: 100%;
   margin: 0;

@@ -187,6 +187,7 @@ export default {
       this.selectedElement.summary = element.summary;
     },
     generateGeneralElementInfo() {
+      // adds the correct class according to the element category
       document.querySelector("#card-element-general").removeAttribute("class");
       if (this.selectedElement.category.includes("unknown")) {
         document
@@ -197,15 +198,16 @@ export default {
           .querySelector("#card-element-general")
           .classList.add(this.selectedElement.category.replace(/\s+/g, "-"));
       }
+
       document.querySelector(
         ".card-element-name"
       ).innerHTML = this.selectedElement.name;
+
       document.querySelector(
         ".card-element-category"
       ).innerHTML = this.selectedElement.category;
     },
     generateElementBoil() {
-      // generate boiling point
       if (this.selectedElement.boil === null) {
         this.selectedElement.boil = "N/A";
       } else {
@@ -266,12 +268,16 @@ export default {
       ).innerHTML = this.selectedElement.summary;
     },
     revealCard() {
+      document.querySelector(".card-element-wrapper").classList.remove("hide");
       document.querySelector(".card-element-wrapper").classList.add("reveal");
     },
     hideCard() {
+      // bug with bohr model when trying to use display: none so I used
+      // opacity: 0 instead
       document
         .querySelector(".card-element-wrapper")
         .classList.remove("reveal");
+      document.querySelector(".card-element-wrapper").classList.add("hide");
     },
     getWindowWidth(event) {
       this.windowWidth = document.documentElement.clientWidth;

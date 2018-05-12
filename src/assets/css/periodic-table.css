@@ -581,7 +581,11 @@ button {
 }
 
 .reveal {
-  display: block !important;
+  opacity: 1;
+}
+
+.hide {
+  opacity: 0;
 }
 
 .shadow {

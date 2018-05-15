@@ -8,6 +8,7 @@
         <TutorialCard/>
         <ElementCard/>
         <div v-for="element in elements" class="element shadow-hoverable"
+        :key="element.id"
         :class="`${element.category.replace(/probably|predicted to be/g, '').replace(/\s+/g, '-').replace(/,-/g, ' ')}`"
         :id="element.name.toLowerCase()"
         :style="`grid-column-start: ${element.xpos + 1}; grid-row-start: ${element.ypos + 1}`"
@@ -31,80 +32,15 @@
           </div>
          </router-link>
         </div>
-        <div class="period-label" :style="`grid-column-start: 1; grid-row-start: 2;`">
-          <span id="period-1">1</span>
+        <div v-for="n in 7" class="period-label" :key="n.id" :id="'period-' + n"
+        :style="`grid-column-start: 1; grid-row-start: ${n + 1}`">
+          <div>
+            <span>{{n}}</span>
+          </div>
         </div>
-        <div class="period-label" :style="`grid-column-start: 1; grid-row-start: 3;`">
-          <span id="period-2">2</span>
-        </div>
-        <div class="period-label" :style="`grid-column-start: 1; grid-row-start: 4;`">
-          <span id="period-3">3</span>
-        </div>
-        <div class="period-label" :style="`grid-column-start: 1; grid-row-start: 5;`">
-          <span id="period-4">4</span>
-        </div>
-        <div class="period-label" :style="`grid-column-start: 1; grid-row-start: 6;`">
-          <span id="period-5">5</span>
-        </div>
-        <div class="period-label" :style="`grid-column-start: 1; grid-row-start: 7;`">
-          <span id="period-6">6</span>
-        </div>
-        <div class="period-label" :style="`grid-column-start: 1; grid-row-start: 8;`">
-          <span id="period-7">7</span>
-        </div>
-        <div class="group-label" :style="`grid-column-start: 2; grid-row-start: 1;`">
-          <span id="group-1">1</span>
-        </div>
-        <div class="group-label" :style="`grid-column-start: 3; grid-row-start: 2; `">
-          <span id="group-2">2</span>
-        </div>
-        <div class="group-label" :style="`grid-column-start: 4; grid-row-start: 4; `">
-          <span id="group-3">3</span>
-        </div>
-        <div class="group-label" :style="`grid-column-start: 5; grid-row-start: 4; `">
-          <span id="group-4">4</span>
-        </div>
-        <div class="group-label" :style="`grid-column-start: 6; grid-row-start: 4; `">
-          <span id="group-5">5</span>
-        </div>
-        <div class="group-label" :style="`grid-column-start: 7; grid-row-start: 4; `">
-          <span id="group-6">6</span>
-        </div>
-        <div class="group-label" :style="`grid-column-start: 8; grid-row-start: 4; `">
-          <span id="group-7">7</span>
-        </div>
-        <div class="group-label" :style="`grid-column-start: 9; grid-row-start: 4; `">
-          <span id="group-8">8</span>
-        </div>
-        <div class="group-label" :style="`grid-column-start: 10; grid-row-start: 4; `">
-          <span id="group-9">9</span>
-        </div>
-        <div class="group-label" :style="`grid-column-start: 11; grid-row-start: 4; `">
-          <span id="group-10">10</span>
-        </div>
-        <div class="group-label" :style="`grid-column-start: 12; grid-row-start: 4; `">
-          <span id="group-11">11</span>
-        </div>
-        <div class="group-label" :style="`grid-column-start: 13; grid-row-start: 4; `">
-          <span id="group-12">12</span>
-        </div>
-        <div class="group-label" :style="`grid-column-start: 14; grid-row-start: 2; `">
-          <span id="group-13">13</span>
-        </div>
-        <div class="group-label" :style="`grid-column-start: 15; grid-row-start: 2; `">
-          <span id="group-14">14</span>
-        </div>
-        <div class="group-label" :style="`grid-column-start: 16; grid-row-start: 2; `">
-          <span id="group-15">15</span>
-        </div>
-        <div class="group-label" :style="`grid-column-start: 17; grid-row-start: 2; `">
-          <span id="group-16">16</span>
-        </div>
-        <div class="group-label" :style="`grid-column-start: 18; grid-row-start: 2; `">
-          <span id="group-17">17</span>
-        </div>
-        <div class="group-label" :style="`grid-column-start: 19; grid-row-start: 1; `">
-          <span id="group-18">18</span>
+        <div v-for="n in 18" class="group-label" :key="n.id" :id="'group-' + n"
+        :style="generateGroupLabelPosition(n)">
+          <span>{{n}}</span>
         </div>
         <div class="element shadow lanthanide placeholder" :style="`grid-column-start: 4; grid-row-start: 7`"></div>
         <div class="element shadow actinide placeholder" :style="`grid-column-start: 4; grid-row-start: 8`"></div>
@@ -281,6 +217,22 @@ export default {
     },
     getWindowWidth(event) {
       this.windowWidth = document.documentElement.clientWidth;
+    },
+    generateGroupLabelPosition(n) {
+      // all this just so I can have one v-for statement for group labels
+      let position = {};
+
+      position.gridColumnStart = n + 1;
+
+      if (n === 1 || n === 18) {
+        position.gridRowStart = 1;
+      } else if (n === 2 || (n >= 13 && n <= 17)) {
+        position.gridRowStart = 2;
+      } else {
+        position.gridRowStart = 4;
+      }
+
+      return position;
     }
   },
   mounted: function() {
@@ -416,13 +368,10 @@ h2.liquid {
   box-shadow: unset;
 }
 
-.period-label {
-  display: block;
-}
-
 .group-label {
-  display: block;
-  align-self: end;
+  display: flex;
+  justify-content: center;
+  align-self: flex-end;
   z-index: 3;
 }
 

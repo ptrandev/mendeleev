@@ -66,8 +66,7 @@ export default {
         idNumber: 1,
         nucleusColor: "#1B2126",
         electronColor: "#90CAF9",
-        orbitalColor: "#1B2126",
-        animationTime: 1500
+        orbitalColor: "#1B2126"
       },
       orbitalRotationConfig: {
         pattern: {
@@ -175,11 +174,10 @@ export default {
 
         // atom now generated, prevent if statement from running agian
         this.atomGenerated = true;
+      } else {
+        this.myAtom.setNumElectrons(this.selectedElement.number);
+        this.myAtom.rotateOrbitals(this.orbitalRotationConfig);
       }
-
-      // set number of electrons for atomic model, apply orbital config
-      this.myAtom.setNumElectrons(this.selectedElement.number);
-      this.myAtom.rotateOrbitals(this.orbitalRotationConfig);
     },
     displayInfo() {
       document.querySelector("#phase").innerHTML = this.selectedElement.phase;

@@ -191,10 +191,9 @@ export default {
       }
     },
     elementElectronConfiguration: function() {
-      return pt.numbers[this.$route.params.id].electronicConfiguration.replace(
-        /(?<=s)[0-9]?[0-9]|(?<=p)[0-9]?[0-9]|(?<=d)[0-9]?[0-9]|(?<=f)[0-9]?[0-9]/g,
-        "<sup>$&</sup>"
-      );
+      return pt.numbers[
+        this.selectedElement.number
+      ].electronicConfiguration.replace(/(s|p|d|f)(\d+)/g, "$1<sup>$2</sup>");
     },
     elementElectronsPerShell: function() {
       return this.selectedElement.shells.join(", ");

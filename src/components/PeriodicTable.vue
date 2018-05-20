@@ -88,7 +88,8 @@ export default {
         mass: null,
         period: null,
         group: null,
-        summary: null
+        summary: null,
+        electronConfiguration: null
       }
     };
   },
@@ -120,6 +121,9 @@ export default {
       this.selectedElement.period = element.period;
       this.selectedElement.group = element.xpos;
       this.selectedElement.summary = element.summary;
+      this.selectedElement.electronConfiguration = pt.numbers[
+        this.selectedElement.number
+      ].electronicConfiguration.replace(/(s|p|d|f)(\d+)/g, "$1<sup>$2</sup>");
     },
     generateGeneralElementInfo() {
       // adds the correct class according to the element category
@@ -189,12 +193,9 @@ export default {
       ).innerHTML = this.selectedElement.melt;
       document.querySelector("#number-mass").innerHTML =
         this.selectedElement.number + " / " + this.selectedElement.mass;
-      document.querySelector("#electron-configuration").innerHTML = pt.numbers[
-        this.selectedElement.number
-      ].electronicConfiguration.replace(
-        /(?<=s)[0-9]?[0-9]|(?<=p)[0-9]?[0-9]|(?<=d)[0-9]?[0-9]|(?<=f)[0-9]?[0-9]/g,
-        "<sup>$&</sup>"
-      );
+      document.querySelector(
+        "#electron-configuration"
+      ).innerHTML = this.selectedElement.electronConfiguration;
       document.querySelector("#period-group").innerHTML =
         this.selectedElement.period + " / " + this.selectedElement.group;
       document.querySelector(
